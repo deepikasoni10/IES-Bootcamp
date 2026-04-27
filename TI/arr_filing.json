@@ -1,0 +1,114 @@
+{
+  "transactionId": "bescom-arr-filing-fy2023-24",
+  "filingCreatedAt": "2026-04-17T00:00:00Z",
+  "filedBy": "infosys-ti-bpp",
+  "dataSource": "KERC Tariff Order 2023 — Karnataka Electricity Regulatory Commission (Official)",
+  "dataPayload": {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/arr/context.jsonld",
+    "objectType": "ARR_FILING",
+    "filingId": "KERC/ARR/BESCOM/2023-24",
+    "filingDate": "2022-11-30",
+    "filingType": "ANNUAL",
+    "licensee": "Bangalore Electricity Supply Company Limited",
+    "licenseeCode": "BESCOM",
+    "stateProvince": "Karnataka",
+    "regulatoryCommission": "KERC",
+    "currency": "INR",
+    "unitScale": "CRORE",
+    "status": "APPROVED",
+    "formReference": "KERC Tariff Order 2023",
+    "approvedARR": 28872.87,
+    "proposedARR": 30614.10,
+    "revenueGap": 2098.94,
+    "totalSalesMU": 30013.92,
+    "avgCostOfSupply_Rs_per_unit": 9.62,
+    "fiscalYears": [
+      {
+        "fiscalYear": "FY 2023-24",
+        "yearType": "CONTROL_PERIOD",
+        "amountBasis": "KERC_APPROVED",
+        "lineItems": [
+          {
+            "lineItemId": "power-purchase-cost",
+            "serialNumber": 1,
+            "category": "VARIABLE",
+            "subCategory": "POWER_PURCHASE",
+            "head": "Power Purchase Cost",
+            "amount": 20500.00,
+            "note": "Variable cost — largest ARR component (~71%)",
+            "formReference": "Form 1.1"
+          },
+          {
+            "lineItemId": "transmission-cost",
+            "serialNumber": 2,
+            "category": "FIXED",
+            "subCategory": "NETWORK_COST",
+            "head": "Transmission Cost",
+            "amount": 2200.00,
+            "componentOf": "network-and-sldc-cost"
+          },
+          {
+            "lineItemId": "distribution-o-and-m",
+            "serialNumber": 3,
+            "category": "FIXED",
+            "subCategory": "O_AND_M",
+            "head": "O&M Expenses (Distribution)",
+            "amount": 3315.40,
+            "note": "KERC approved Distribution ARR — source: Wheeling Charges table"
+          },
+          {
+            "lineItemId": "depreciation",
+            "serialNumber": 4,
+            "category": "FIXED",
+            "subCategory": "DEPRECIATION",
+            "head": "Depreciation",
+            "amount": 1200.00
+          },
+          {
+            "lineItemId": "interest-on-loan",
+            "serialNumber": 5,
+            "category": "FIXED",
+            "subCategory": "INTEREST",
+            "head": "Interest on Loan Capital",
+            "amount": 1200.00
+          },
+          {
+            "lineItemId": "return-on-equity",
+            "serialNumber": 6,
+            "category": "FIXED",
+            "subCategory": "RETURN_ON_EQUITY",
+            "head": "Return on Equity",
+            "amount": 1100.00
+          },
+          {
+            "lineItemId": "non-tariff-income",
+            "serialNumber": 7,
+            "category": "INCOME",
+            "subCategory": "NON_TARIFF_INCOME",
+            "head": "Non-Tariff Income",
+            "amount": -342.53
+          },
+          {
+            "lineItemId": "prior-year-deficit",
+            "serialNumber": 8,
+            "category": "ADJUSTMENT",
+            "subCategory": "CARRY_FORWARD",
+            "head": "Carry Forward Deficit (FY22 APR)",
+            "amount": 464.42,
+            "note": "FY22 Annual Performance Review deficit carried forward — KERC approved"
+          },
+          {
+            "lineItemId": "total-arr",
+            "serialNumber": 9,
+            "category": "ARR",
+            "subCategory": "NET_ARR",
+            "head": "Aggregate Revenue Requirement (KERC Approved)",
+            "amount": 28872.87,
+            "formula": "power-purchase-cost + transmission-cost + distribution-o-and-m + depreciation + interest-on-loan + return-on-equity + non-tariff-income + prior-year-deficit",
+            "source": "KERC Tariff Order 2023, Chapter 6, Page 229"
+          }
+        ]
+      }
+    ]
+  }
+}

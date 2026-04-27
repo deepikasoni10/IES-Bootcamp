@@ -1,0 +1,31 @@
+{
+  "name": "ies-platform-backend",
+  "version": "1.0.0",
+  "description": "IES Platform Backend — Infosys Regulatory Data Exchange (RDE)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev":   "nodemon --experimental-vm-modules src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": ["ies", "beckn", "rde", "regulatory", "discom"],
+  "author": "Infosys",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^8.18.0",
+    "ajv-formats": "^3.0.1",
+    "axios": "^1.15.0",
+    "cors": "^2.8.6",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

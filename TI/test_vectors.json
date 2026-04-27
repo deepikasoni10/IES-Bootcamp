@@ -1,0 +1,58 @@
+[
+  {
+    "id": "TV-RES-001",
+    "description": "Residential: exactly 100 kWh (fills slab 1 only)",
+    "policy_id": "RES-T1",
+    "input": { "total_kwh": 100, "night_kwh": 0, "peak_kwh": 0 },
+    "expected": { "base_charge": 450.00, "surcharge_total": 0.00, "total_bill": 450.00 }
+  },
+  {
+    "id": "TV-RES-002",
+    "description": "Residential: 200 kWh (slab 1 + slab 2)",
+    "policy_id": "RES-T1",
+    "input": { "total_kwh": 200, "night_kwh": 0, "peak_kwh": 0 },
+    "expected": { "base_charge": 1200.00, "surcharge_total": 0.00, "total_bill": 1200.00 }
+  },
+  {
+    "id": "TV-RES-003",
+    "description": "Residential: 350 kWh (all 3 slabs)",
+    "policy_id": "RES-T1",
+    "input": { "total_kwh": 350, "night_kwh": 0, "peak_kwh": 0 },
+    "expected": { "base_charge": 2475.00, "surcharge_total": 0.00, "total_bill": 2475.00 }
+  },
+  {
+    "id": "TV-RES-004",
+    "description": "Residential: 80 kWh (only in slab 1)",
+    "policy_id": "RES-T1",
+    "input": { "total_kwh": 80, "night_kwh": 0, "peak_kwh": 0 },
+    "expected": { "base_charge": 360.00, "surcharge_total": 0.00, "total_bill": 360.00 }
+  },
+  {
+    "id": "TV-RES-005",
+    "description": "Residential: 350 kWh with 50 kWh at night (-10% discount on night portion)",
+    "policy_id": "RES-T1",
+    "input": { "total_kwh": 350, "night_kwh": 50, "peak_kwh": 0 },
+    "expected": { "base_charge": 2475.00, "surcharge_total": -35.36, "total_bill": 2439.64 }
+  },
+  {
+    "id": "TV-COM-001",
+    "description": "Commercial: 200 kWh, no peak hours",
+    "policy_id": "COM-TOU1",
+    "input": { "total_kwh": 200, "night_kwh": 0, "peak_kwh": 0 },
+    "expected": { "base_charge": 1700.00, "surcharge_total": 0.00, "total_bill": 1700.00 }
+  },
+  {
+    "id": "TV-COM-002",
+    "description": "Commercial: 500 kWh, 100 kWh during evening peak (+1.5 INR/kWh)",
+    "policy_id": "COM-TOU1",
+    "input": { "total_kwh": 500, "night_kwh": 0, "peak_kwh": 100 },
+    "expected": { "base_charge": 4250.00, "surcharge_total": 150.00, "total_bill": 4400.00 }
+  },
+  {
+    "id": "TV-COM-003",
+    "description": "Commercial: 1000 kWh, 250 kWh during evening peak",
+    "policy_id": "COM-TOU1",
+    "input": { "total_kwh": 1000, "night_kwh": 0, "peak_kwh": 250 },
+    "expected": { "base_charge": 8500.00, "surcharge_total": 375.00, "total_bill": 8875.00 }
+  }
+]

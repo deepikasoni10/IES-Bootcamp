@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infosys IES Platform — Corrected Architecture</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; }
+
+        .header { background: linear-gradient(135deg, #1a1f2e, #2d3748); padding: 20px 30px; border-bottom: 2px solid #4a5568; }
+        .header h1 { font-size: 22px; color: #63b3ed; }
+        .header p { font-size: 13px; color: #a0aec0; margin-top: 4px; }
+
+        .tabs { display: flex; gap: 4px; padding: 16px 30px 0; background: #1a1f2e; }
+        .tab { padding: 8px 20px; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; font-weight: 600; border: 1px solid #4a5568; border-bottom: none; }
+        .tab.active { background: #2d3748; color: #63b3ed; border-color: #63b3ed; }
+        .tab:not(.active) { background: #161b27; color: #718096; }
+        .tab:hover:not(.active) { background: #1e2535; color: #a0aec0; }
+
+        .content { padding: 24px 30px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .arch-container { display: flex; flex-direction: column; gap: 10px; }
+        .layer { border-radius: 12px; overflow: hidden; border: 1px solid; }
+        .layer-header { padding: 8px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .layer-body { padding: 14px 16px; display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+
+        .layer-ui { border-color: #4a5568; }
+        .layer-ui .layer-header { background: #2d3748; color: #a0aec0; }
+        .layer-ui .layer-body { background: #1a2332; }
+
+        .layer-gateway { border-color: #553c9a; }
+        .layer-gateway .layer-header { background: #44337a; color: #d6bcfa; }
+        .layer-gateway .layer-body { background: #1a1630; }
+
+        .layer-auth { border-color: #b7791f; }
+        .layer-auth .layer-header { background: #744210; color: #faf089; }
+        .layer-auth .layer-body { background: #1a1400; }
+
+        .layer-beckn { border-color: #2b6cb0; }
+        .layer-beckn .layer-header { background: #2c5282; color: #bee3f8; }
+        .layer-beckn .layer-body { background: #0f1f2e; }
+
+        .layer-core { border-color: #276749; }
+        .layer-core .layer-header { background: #22543d; color: #9ae6b4; }
+        .layer-core .layer-body { background: #0f1f14; }
+
+        .layer-data { border-color: #c05621; }
+        .layer-data .layer-header { background: #7b341e; color: #fbd38d; }
+        .layer-data .layer-body { background: #1a0f00; }
+
+        .layer-external { border-color: #702459; }
+        .layer-external .layer-header { background: #521b41; color: #fbb6ce; }
+        .layer-external .layer-body { background: #1a0010; }
+
+        .component { padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; text-align: center; }
+        .comp-ui { background: #2d3748; color: #e2e8f0; border: 1px solid #4a5568; }
+        .comp-rde { background: #1c4532; color: #9ae6b4; border: 1px solid #276749; }
+        .comp-utility { background: #1a202c; color: #90cdf4; border: 1px solid #3182ce; }
+        .comp-postbootcamp { background: #1a1a1a; color: #718096; border: 1px dashed #4a5568; opacity: 0.6; }
+        .comp-added { background: #1a4731; color: #68d391; border: 2px solid #38a169; }
+
+        .rde-service { background: #0a1f12; border: 2px solid #38a169; border-radius: 10px; padding: 14px; flex: 1; min-width: 260px; }
+        .rde-title { font-size: 11px; font-weight: 700; color: #68d391; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .rde-components { display: flex; flex-direction: column; gap: 6px; }
+        .rde-arrow { text-align: center; color: #48bb78; font-size: 16px; }
+
+        .ti-service, .edx-service { background: #0a0a1f; border: 2px dashed #4a5568; border-radius: 10px; padding: 12px; min-width: 155px; opacity: 0.5; }
+        .service-title { font-size: 11px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+
+        .utility-container { background: #0f1f35; border: 1px solid #3182ce; border-radius: 10px; padding: 14px; min-width: 220px; }
+        .utility-title { font-size: 11px; font-weight: 700; color: #90cdf4; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+
+        .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding: 12px 16px; background: #1a1f2e; border-radius: 8px; border: 1px solid #2d3748; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #a0aec0; }
+        .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+        .inter-layer-arrow { text-align: center; color: #4a5568; font-size: 20px; margin: 2px 0; }
+
+        .post-bc-badge { display: inline-block; padding: 2px 8px; background: #4a556830; border: 1px dashed #4a5568; border-radius: 4px; font-size: 10px; color: #718096; margin-left: 8px; font-weight: normal; text-transform: none; letter-spacing: 0; }
+        .new-badge { display: inline-block; padding: 2px 6px; background: #e53e3e; border-radius: 4px; font-size: 10px; color: white; margin-left: 6px; }
+        .complete-badge { display: inline-block; padding: 2px 6px; background: #276749; border-radius: 4px; font-size: 10px; color: white; font-weight: 700; }
+
+        .onix-grid { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .onix-box { background: #0f1f35; border: 1px solid #2b6cb0; border-radius: 8px; padding: 10px 14px; min-width: 110px; text-align: center; }
+        .onix-box-title { font-size: 11px; font-weight: 700; color: #63b3ed; text-transform: uppercase; }
+        .onix-box-sub { font-size: 10px; color: #90cdf4; margin-top: 4px; }
+        .onix-arrow { color: #4a5568; font-size: 20px; }
+
+        .plugins { background: #0f1520; border: 1px dashed #3182ce; border-radius: 8px; padding: 10px 14px; flex: 1; margin-top: 10px; }
+        .plugin-title { font-size: 10px; color: #718096; margin-bottom: 6px; font-weight: 600; }
+        .plugin-list { display: flex; gap: 6px; flex-wrap: wrap; }
+        .plugin-tag { background: #1a2d4a; border: 1px solid #2b6cb0; border-radius: 4px; padding: 2px 10px; font-size: 11px; color: #90cdf4; font-family: monospace; }
+
+        .kc-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+        .kc-box { background: #1a1400; border: 1px solid #b7791f; border-radius: 8px; padding: 10px 14px; min-width: 110px; }
+        .kc-title { font-size: 10px; font-weight: 700; color: #faf089; text-transform: uppercase; margin-bottom: 6px; }
+        .kc-item { font-size: 11px; color: #f6e05e; padding: 1px 0; }
+        .token-endpoint { background: #1a1200; border: 1px solid #b7791f; border-radius: 6px; padding: 8px 14px; margin-top: 10px; font-family: monospace; font-size: 11px; color: #faf089; }
+
+        .data-store { background: #1a0f0030; border: 1px solid #c05621; border-radius: 8px; padding: 10px 12px; min-width: 120px; }
+        .data-store-title { font-size: 11px; font-weight: 700; color: #fbd38d; }
+        .data-item { font-size: 10px; color: #a0aec0; padding: 2px 0; }
+
+        .ext-box { background: #1a001030; border: 1px solid #702459; border-radius: 8px; padding: 10px 14px; min-width: 120px; text-align: center; }
+        .ext-title { font-size: 11px; font-weight: 700; color: #fbb6ce; }
+        .ext-sub { font-size: 10px; color: #fc8181; margin-top: 3px; }
+
+        .cb-endpoint { padding: 4px 10px; background: #0f1520; border-radius: 4px; font-family: monospace; font-size: 11px; color: #90cdf4; margin: 3px 0; border-left: 2px solid #3182ce; }
+
+        .section-title { font-size: 16px; font-weight: 700; color: #63b3ed; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #2d3748; }
+
+        .callout { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; }
+        .callout-error { background: #742a2a30; border: 1px solid #e53e3e; color: #feb2b2; }
+        .callout-success { background: #1c453230; border: 1px solid #38a169; color: #9ae6b4; }
+
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 9px 14px; border: 1px solid #2d3748; font-size: 12px; }
+        th { background: #1a4731; color: #9ae6b4; text-align: left; }
+
+        .sub-label { font-size: 10px; color: #718096; margin-top: 3px; font-weight: normal; }
+
+        .detail-card { background: #0f1a10; border: 1px solid #276749; border-radius: 10px; padding: 16px; }
+        .detail-card.blue { background: #0f1520; border-color: #3182ce; }
+        .detail-card.red-border { background: #0a1020; border: 2px solid #3182ce; }
+        .detail-card-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+
+        .fix-card { background: #742a2a30; border: 1px solid #e53e3e; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+        .fix-card.warn { background: #7b341e30; border-color: #dd6b20; }
+        .fix-card-title { color: #fc8181; font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+        .fix-card.warn .fix-card-title { color: #fbd38d; }
+
+        .state-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 16px; background: #0f1520; border: 1px solid #3182ce; border-radius: 10px; }
+        .state-box { border-radius: 12px; padding: 6px 14px; font-size: 11px; font-weight: 600; }
+
+        .int-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 16px; border-radius: 10px; }
+        .flow-box { border-radius: 6px; padding: 8px 12px; font-size: 12px; text-align: center; line-height: 1.3; }
+        .flow-arrow { font-size: 18px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+        .day-card { border-radius: 10px; padding: 16px; }
+        .day-card.green { background: #0f1a10; border: 2px solid #38a169; }
+        .day-card.blue { background: #0f1520; border: 2px solid #3182ce; }
+        .day-card.purple { background: #1a0a20; border: 2px solid #805ad5; }
+        .day-card-title { font-weight: 700; margin-bottom: 10px; }
+        .day-card.green .day-card-title { color: #68d391; }
+        .day-card.blue .day-card-title { color: #90cdf4; }
+        .day-card.purple .day-card-title { color: #d6bcfa; }
+        .day-item { font-size: 12px; color: #a0aec0; line-height: 1.8; }
+        .day-goal { border-radius: 6px; padding: 8px; margin-top: 12px; font-size: 11px; }
+        .day-card.green .day-goal { background: #1a4731; color: #9ae6b4; }
+        .day-card.blue .day-goal { background: #1a2d4a; color: #90cdf4; }
+        .day-card.purple .day-goal { background: #2d1b69; color: #d6bcfa; }
+
+        .correct-item { background: #1c453220; border: 1px solid #276749; border-radius: 8px; padding: 10px; font-size: 12px; color: #9ae6b4; }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .onix-grid { flex-direction: column; }
+            .int-flow, .state-flow { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Infosys IES Platform — Corrected Architecture</h1>
+    <p>IES Bootcamp: Apr 15–17, 2026 &nbsp;|&nbsp; Use Case: DISCOM → SERC ARR Filing Lifecycle &nbsp;|&nbsp; Protocol: Beckn + IES</p>
+</div>
+
+<div class="tabs">
+    <div class="tab active" onclick="showTab('arch', this)">Complete Architecture</div>
+    <div class="tab" onclick="showTab('flow', this)">Filing Lifecycle Flow</div>
+    <div class="tab" onclick="showTab('components', this)">Component Details</div>
+    <div class="tab" onclick="showTab('corrections', this)">What Was Fixed</div>
+</div>
+
+<div class="content">
+
+<!-- ===== TAB 1: ARCHITECTURE ===== -->
+<div id="arch" class="tab-content active">
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#38a169;border:2px solid #38a169;"></div>Bootcamp Scope (Build Now)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3182ce;border:2px solid #3182ce;"></div>Required Infrastructure</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e53e3e;border:2px solid #e53e3e;"></div>Fixed / Added (Was Missing)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#1a1a1a;border:2px dashed #4a5568;"></div>Post-Bootcamp (Skip for now)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#702459;border:2px solid #702459;"></div>External Systems (Pre-deployed)</div>
+    </div>
+
+    <div class="arch-container">
+
+        <!-- LAYER 1 -->
+        <div class="layer layer-ui">
+            <div class="layer-header">Layer 1 — Client / UI</div>
+            <div class="layer-body">
+                <div class="component comp-rde">DISCOM Portal<div class="sub-label">RDE Filing UI</div></div>
+                <div class="component comp-ui">API Client<div class="sub-label">Postman / cURL</div></div>
+                <div class="component comp-postbootcamp">Consumer App<div class="sub-label">EDX View <span class="post-bc-badge">Post-Bootcamp</span></div></div>
+                <div class="component comp-postbootcamp">Admin Dashboard<div class="sub-label">TI Admin <span class="post-bc-badge">Post-Bootcamp</span></div></div>
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 2 -->
+        <div class="layer layer-gateway">
+            <div class="layer-header">Layer 2 — API Gateway <span class="post-bc-badge">Production Concern — Not needed for bootcamp</span></div>
+            <div class="layer-body">
+                <div style="flex:1;background:#2d1b69;color:#d6bcfa;border:1px solid #553c9a;border-radius:8px;padding:10px 16px;font-size:12px;text-align:center;">
+                    Spring Cloud Gateway / Kong
+                    <div class="sub-label" style="color:#b794f4;">Rate Limiting · Routing · CORS · Request Logging</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 3 -->
+        <div class="layer layer-auth">
+            <div class="layer-header">Layer 3 — Authentication (Keycloak) <span class="post-bc-badge">Sandbox has own auth — Production concern</span></div>
+            <div class="layer-body">
+                <div style="flex:1;">
+                    <div class="kc-grid">
+                        <div class="kc-box"><div class="kc-title">Realm</div><div class="kc-item">ies-realm</div></div>
+                        <div class="kc-box"><div class="kc-title">Clients</div><div class="kc-item">discom-app</div><div class="kc-item">consumer-app</div><div class="kc-item">admin-app</div></div>
+                        <div class="kc-box"><div class="kc-title">Roles</div><div class="kc-item">DISCOM</div><div class="kc-item">CONSUMER</div><div class="kc-item">REGULATOR</div></div>
+                        <div class="kc-box"><div class="kc-title">Scopes</div><div class="kc-item">filing:rw</div><div class="kc-item">meter:r</div><div class="kc-item">policy:rw</div></div>
+                    </div>
+                    <div class="token-endpoint">POST /auth/realms/ies-realm/protocol/openid-connect/token → JWT Access Token + Refresh Token</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 4 -->
+        <div class="layer layer-beckn">
+            <div class="layer-header">Layer 4 — Beckn ONIX Middleware (Pre-deployed in Sandbox)</div>
+            <div class="layer-body">
+                <div style="flex:1;">
+                    <div class="onix-grid">
+                        <div class="onix-box">
+                            <div class="onix-box-title">BAP Agent</div>
+                            <div class="onix-box-sub">DISCOM Side</div>
+                            <div class="onix-box-sub" style="color:#68d391;margin-top:6px;">← Infosys builds this</div>
+                        </div>
+                        <div class="onix-arrow">⟷</div>
+                        <div class="onix-box">
+                            <div class="onix-box-title">Gateway</div>
+                            <div class="onix-box-sub">Routes Messages</div>
+                            <div class="onix-box-sub" style="color:#fbd38d;margin-top:6px;">Pre-deployed</div>
+                        </div>
+                        <div class="onix-arrow">⟷</div>
+                        <div class="onix-box">
+                            <div class="onix-box-title">Registry</div>
+                            <div class="onix-box-sub">DeDi Participants</div>
+                            <div class="onix-box-sub" style="color:#fbd38d;margin-top:6px;">Pre-deployed</div>
+                        </div>
+                        <div class="onix-arrow">⟷</div>
+                        <div class="onix-box">
+                            <div class="onix-box-title">BPP Agent</div>
+                            <div class="onix-box-sub">SERC Side</div>
+                            <div class="onix-box-sub" style="color:#fbd38d;margin-top:6px;">Mock SERC</div>
+                        </div>
+                    </div>
+                    <div class="plugins">
+                        <div class="plugin-title">PLUGINS (Loaded at Runtime)</div>
+                        <div class="plugin-list">
+                            <div class="plugin-tag">cache</div>
+                            <div class="plugin-tag">decrypter</div>
+                            <div class="plugin-tag">encrypter</div>
+                            <div class="plugin-tag">keymanager</div>
+                            <div class="plugin-tag">dedireg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 5 -->
+        <div class="layer layer-core">
+            <div class="layer-header">Layer 5 — Core Services (Microservices) — Infosys Builds These</div>
+            <div class="layer-body">
+
+                <!-- RDE Service -->
+                <div class="rde-service">
+                    <div class="rde-title">RDE Service &nbsp;<span class="complete-badge">✓ Bootcamp Target</span></div>
+                    <div class="rde-components">
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            1. CSV / Excel Parser
+                            <div class="sub-label">pandas, openpyxl · handles sheets, merged cells, date formats</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            2. Schema Mapper
+                            <div class="sub-label">DISCOM format → IES DatasetPayload JSON-LD · YAML config per DISCOM</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            3. Content Hasher (SHA-256)
+                            <div class="sub-label">Canonical JSON (sorted keys, no whitespace) → sha256:hex</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            4. CommonEnvelope Builder
+                            <div class="sub-label">Wrap payload + hash + issuer_id + created_at + provenance</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-added" style="text-align:left;padding:7px 10px;">
+                            5. Beckn Message Builder <span class="new-badge">ADDED ✓</span>
+                            <div class="sub-label">context + message JSON · UUID gen (transaction_id, message_id) · route to ONIX</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            6. Receipt Processor
+                            <div class="sub-label">Verify SERC Ed25519 signature · check hash match · store with provenance</div>
+                        </div>
+                        <div class="rde-arrow">↓</div>
+                        <div class="component comp-rde" style="text-align:left;padding:7px 10px;">
+                            10. JSON Schema Validator
+                            <div class="sub-label">Validate DatasetPayload against IES .json schemas before /init and /confirm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Utilities -->
+                <div class="utility-container">
+                    <div class="utility-title">Common Utilities</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <div class="component comp-utility" style="text-align:left;padding:7px 10px;">
+                            7. Credential Manager
+                            <div class="sub-label">W3C VC fetch from cred service · attach to /confirm · Ed25519 sign payload hash</div>
+                        </div>
+                        <div class="component comp-added" style="text-align:left;padding:7px 10px;">
+                            8. Async Callback Server <span class="new-badge">FIXED ✓</span>
+                            <div class="sub-label">HTTP server listening for on_* async responses</div>
+                            <div class="cb-endpoint" style="margin-top:6px;">POST /callback/on_search</div>
+                            <div class="cb-endpoint">POST /callback/on_init → ValidationReport</div>
+                            <div class="cb-endpoint">POST /callback/on_confirm → signed Receipt</div>
+                            <div class="cb-endpoint">POST /callback/on_status → Disclosure info</div>
+                        </div>
+                        <div class="component comp-utility" style="text-align:left;padding:7px 10px;">
+                            9. Filing State Machine
+                            <div class="sub-label">preparing → draft_submitted → draft_validated → formally_submitted → accepted/rejected → disclosed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-bootcamp -->
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <div class="ti-service">
+                        <div class="service-title">TI Service <span class="post-bc-badge">Post-Bootcamp</span></div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Policy Pack Downloader</div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Tariff Engine (Slab calc)</div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Execution Trace Generator</div>
+                    </div>
+                    <div class="edx-service">
+                        <div class="service-title">EDX Service <span class="post-bc-badge">Post-Bootcamp</span></div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Meter Data Fetcher</div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Consent Manager</div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">Quality Flag Handler</div>
+                        <div class="component comp-postbootcamp" style="margin:3px 0;font-size:11px;">VAS Output Generator</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 6 -->
+        <div class="layer layer-data">
+            <div class="layer-header">Layer 6 — Data &amp; Storage</div>
+            <div class="layer-body">
+                <div class="data-store">
+                    <div class="data-store-title">PostgreSQL</div>
+                    <div style="margin-top:6px;">
+                        <div class="data-item">• Filing Records</div>
+                        <div class="data-item">• Receipts</div>
+                        <div class="data-item">• Users</div>
+                        <div class="data-item">• State History</div>
+                    </div>
+                </div>
+                <div class="data-store">
+                    <div class="data-store-title">Redis</div>
+                    <div style="margin-top:6px;">
+                        <div class="data-item">• Sessions</div>
+                        <div class="data-item">• JWT Tokens</div>
+                        <div class="data-item">• Rate Limiting</div>
+                    </div>
+                </div>
+                <div class="data-store">
+                    <div class="data-store-title">S3 / File Store</div>
+                    <div style="margin-top:6px;">
+                        <div class="data-item">• DatasetPayloads</div>
+                        <div class="data-item">• Receipts (JSON)</div>
+                        <div class="data-item">• Raw CSV / Excel</div>
+                    </div>
+                </div>
+                <div class="data-store" style="border-color:#38a169;">
+                    <div class="data-store-title" style="color:#9ae6b4;">DeDi Catalog</div>
+                    <div style="margin-top:6px;">
+                        <div class="data-item">• Participant Endpoints</div>
+                        <div class="data-item">• Public Keys</div>
+                        <div class="data-item" style="color:#68d391;font-weight:600;">• Public Disclosures ← NEW</div>
+                    </div>
+                </div>
+                <div class="data-store" style="opacity:0.5;border-style:dashed;">
+                    <div class="data-store-title" style="color:#718096;">Policy Store <span class="post-bc-badge">Post-BC</span></div>
+                    <div style="margin-top:6px;">
+                        <div class="data-item">• Policy Packs</div>
+                        <div class="data-item">• Tariff Plans</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inter-layer-arrow">↓</div>
+
+        <!-- LAYER 7 -->
+        <div class="layer layer-external">
+            <div class="layer-header">Layer 7 — External Systems (Pre-deployed in Sandbox)</div>
+            <div class="layer-body">
+                <div class="ext-box">
+                    <div class="ext-title">Mock SERC</div>
+                    <div class="ext-sub">BPP</div>
+                    <div class="ext-sub" style="color:#9ae6b4;margin-top:6px;">Validates + Issues Receipt</div>
+                </div>
+                <div class="ext-box">
+                    <div class="ext-title">Credential Service</div>
+                    <div class="ext-sub">W3C VC Issuer</div>
+                    <div class="ext-sub" style="color:#9ae6b4;margin-top:6px;">Issues DISCOM credentials</div>
+                </div>
+                <div class="ext-box">
+                    <div class="ext-title">DeDi.global</div>
+                    <div class="ext-sub">Directory</div>
+                    <div class="ext-sub" style="color:#9ae6b4;margin-top:6px;">Participant registry</div>
+                </div>
+                <div class="ext-box">
+                    <div class="ext-title">Beckn Network</div>
+                    <div class="ext-sub">ONIX Sandbox</div>
+                    <div class="ext-sub" style="color:#9ae6b4;margin-top:6px;">Gateway + Registry</div>
+                </div>
+                <div class="ext-box" style="opacity:0.5;border-style:dashed;border-color:#4a5568;">
+                    <div class="ext-title" style="color:#718096;">Mock AMISP</div>
+                    <div class="ext-sub" style="color:#718096;">Meter Data</div>
+                    <div class="ext-sub" style="color:#4a5568;margin-top:6px;">Post-Bootcamp</div>
+                </div>
+                <div class="ext-box" style="opacity:0.5;border-style:dashed;border-color:#4a5568;">
+                    <div class="ext-title" style="color:#718096;">Mock Policy Reg</div>
+                    <div class="ext-sub" style="color:#718096;">TI Use Case</div>
+                    <div class="ext-sub" style="color:#4a5568;margin-top:6px;">Post-Bootcamp</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== TAB 2: FILING LIFECYCLE FLOW ===== -->
+<div id="flow" class="tab-content">
+
+    <div class="section-title">RDE Filing Lifecycle — Complete API Flow</div>
+
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:50px;">Step</th>
+                    <th>API Action</th>
+                    <th>Who → Who</th>
+                    <th>Type</th>
+                    <th>What Happens</th>
+                    <th>State After</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#1a1f2e;">
+                    <td style="color:#718096;">0</td>
+                    <td style="color:#63b3ed;font-weight:700;">Setup / Register</td>
+                    <td style="color:#9ae6b4;">Infosys → DeDi + Cred Service</td>
+                    <td><span style="background:#276749;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">SETUP</span></td>
+                    <td>Register in DeDi directory. Get Verifiable Credential from credential service.</td>
+                    <td style="color:#fbd38d;">registered</td>
+                </tr>
+                <tr style="background:#161b27;">
+                    <td style="color:#718096;">1a</td>
+                    <td style="color:#63b3ed;font-weight:700;">/search</td>
+                    <td style="color:#9ae6b4;">BAP → Gateway → BPP</td>
+                    <td><span style="background:#3182ce;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">SYNC</span></td>
+                    <td>Find SERC endpoint. Intent: ARR_petition, regulatory_filing.</td>
+                    <td style="color:#fbd38d;">searching</td>
+                </tr>
+                <tr style="background:#1a1f2e;">
+                    <td style="color:#718096;">1b</td>
+                    <td style="color:#fbd38d;font-weight:700;">/on_search</td>
+                    <td style="color:#9ae6b4;">BPP → BAP /callback/on_search</td>
+                    <td><span style="background:#805ad5;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">ASYNC</span></td>
+                    <td>SERC catalog returned with supported filing types, schema refs (ies:DatasetPayload:ARR:v1.0).</td>
+                    <td style="color:#fbd38d;">ready</td>
+                </tr>
+                <tr style="background:#0f1a10;border-left:4px solid #38a169;">
+                    <td style="color:#68d391;">2a</td>
+                    <td style="color:#63b3ed;font-weight:700;">/init (Draft)</td>
+                    <td style="color:#9ae6b4;">BAP → Gateway → BPP</td>
+                    <td><span style="background:#3182ce;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">SYNC ACK</span></td>
+                    <td>Send draft filing: DatasetPayload + payload_hash + payload_url + envelope. BPP returns HTTP 200 ACK immediately.</td>
+                    <td style="color:#fbd38d;">draft_submitted</td>
+                </tr>
+                <tr style="background:#0f1a10;border-left:4px solid #38a169;">
+                    <td style="color:#68d391;">2b</td>
+                    <td style="color:#fbd38d;font-weight:700;">/on_init</td>
+                    <td style="color:#9ae6b4;">BPP → BAP /callback/on_init</td>
+                    <td><span style="background:#805ad5;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">ASYNC</span></td>
+                    <td>ValidationReport: schema_check, hash_check, completeness_check, observations with field-level warnings.</td>
+                    <td style="color:#fbd38d;">draft_validated</td>
+                </tr>
+                <tr style="background:#0f1520;border-left:4px solid #3182ce;">
+                    <td style="color:#63b3ed;">3a</td>
+                    <td style="color:#63b3ed;font-weight:700;">/confirm (Formal)</td>
+                    <td style="color:#9ae6b4;">BAP → Gateway → BPP</td>
+                    <td><span style="background:#3182ce;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">SYNC ACK</span></td>
+                    <td>Formal submission: W3C Verifiable Credential + Ed25519 digital_signature + payload_hash + provenance chain. BPP verifies credential + hash.</td>
+                    <td style="color:#fbd38d;">formally_submitted</td>
+                </tr>
+                <tr style="background:#0f1520;border-left:4px solid #3182ce;">
+                    <td style="color:#63b3ed;">3b</td>
+                    <td style="color:#fbd38d;font-weight:700;">/on_confirm</td>
+                    <td style="color:#9ae6b4;">BPP → BAP /callback/on_confirm</td>
+                    <td><span style="background:#805ad5;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">ASYNC</span></td>
+                    <td>Signed RegulatoryFilingReceipt: filing_id, status (accepted/rejected), accepted_payload_hash, disclosure_catalog_url, SERC Ed25519 proof.</td>
+                    <td style="color:#fbd38d;">accepted / rejected</td>
+                </tr>
+                <tr style="background:#161b27;">
+                    <td style="color:#718096;">4a</td>
+                    <td style="color:#63b3ed;font-weight:700;">/status</td>
+                    <td style="color:#9ae6b4;">BAP → Gateway → BPP</td>
+                    <td><span style="background:#3182ce;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">SYNC</span></td>
+                    <td>Check filing state by filing_id: "SERC/ARR/2026-27/MH/001"</td>
+                    <td style="color:#fbd38d;">—</td>
+                </tr>
+                <tr style="background:#161b27;">
+                    <td style="color:#718096;">4b</td>
+                    <td style="color:#fbd38d;font-weight:700;">/on_status</td>
+                    <td style="color:#9ae6b4;">BPP → BAP /callback/on_status</td>
+                    <td><span style="background:#805ad5;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">ASYNC</span></td>
+                    <td>filing_status: "disclosed" + disclosure catalog_url + content_hash for verification.</td>
+                    <td style="color:#fbd38d;">disclosed</td>
+                </tr>
+                <tr style="background:#1a0f00;border-left:4px solid #c05621;">
+                    <td style="color:#fbd38d;">5</td>
+                    <td style="color:#fbd38d;font-weight:700;">Public Disclosure</td>
+                    <td style="color:#9ae6b4;">SERC → DeDi Catalog</td>
+                    <td><span style="background:#c05621;color:white;padding:2px 8px;border-radius:4px;font-size:10px;">PUBLIC</span></td>
+                    <td>Filing published as static JSON on DeDi. Anyone can: discover → fetch catalog → download data → verify SHA-256 hash → verify SERC signature.</td>
+                    <td style="color:#fbd38d;">publicly_disclosed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Internal flow -->
+    <div style="margin-top:24px;">
+        <div class="section-title">Internal Component Flow — What Happens Inside BAP</div>
+
+        <div class="int-flow" style="background:#0f1a10;border:1px solid #276749;">
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">CSV/Excel<br>Input</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">1. CSV<br>Parser</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">2. Schema<br>Mapper</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">3. SHA-256<br>Hasher</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">4. Envelope<br>Builder</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1a4731;border:2px solid #38a169;color:#68d391;font-weight:700;">5. Beckn<br>Msg Builder<br><span style="font-size:10px;font-weight:normal;">(ADDED)</span></div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#1a365d;border:1px solid #3182ce;color:#90cdf4;">ONIX<br>Gateway</div>
+            <div class="flow-arrow" style="color:#48bb78;">→</div>
+            <div class="flow-box" style="background:#521b41;border:1px solid #702459;color:#fbb6ce;">Mock<br>SERC</div>
+        </div>
+
+        <div class="int-flow" style="background:#0f1520;border:1px solid #3182ce;margin-top:10px;">
+            <div class="flow-box" style="background:#521b41;border:1px solid #702459;color:#fbb6ce;">SERC<br>Response</div>
+            <div class="flow-arrow" style="color:#63b3ed;">→</div>
+            <div class="flow-box" style="background:#1a2d4a;border:2px solid #3182ce;color:#90cdf4;font-weight:700;">8. Callback<br>Server<br><span style="font-size:10px;font-weight:normal;">(FIXED)</span></div>
+            <div class="flow-arrow" style="color:#63b3ed;">→</div>
+            <div class="flow-box" style="background:#1a2d4a;border:1px solid #3182ce;color:#90cdf4;">9. State<br>Machine</div>
+            <div class="flow-arrow" style="color:#63b3ed;">→</div>
+            <div class="flow-box" style="background:#1c4532;border:1px solid #38a169;color:#9ae6b4;">6. Receipt<br>Processor</div>
+            <div class="flow-arrow" style="color:#63b3ed;">→</div>
+            <div class="flow-box" style="background:#7b341e;border:1px solid #c05621;color:#fbd38d;">PostgreSQL<br>+ S3</div>
+        </div>
+    </div>
+
+    <!-- State Machine -->
+    <div style="margin-top:24px;">
+        <div class="section-title">Filing State Machine</div>
+        <div class="state-flow">
+            <div class="state-box" style="background:#1a1a1a;border:1px solid #4a5568;color:#a0aec0;">preparing</div>
+            <div style="color:#63b3ed;font-size:11px;">→ /init →</div>
+            <div class="state-box" style="background:#1a365d;border:1px solid #3182ce;color:#90cdf4;">draft_submitted</div>
+            <div style="color:#63b3ed;font-size:11px;">→ on_init →</div>
+            <div class="state-box" style="background:#1a365d;border:1px solid #3182ce;color:#90cdf4;">draft_validated</div>
+            <div style="color:#63b3ed;font-size:11px;">→ /confirm →</div>
+            <div class="state-box" style="background:#276749;border:1px solid #38a169;color:#9ae6b4;">formally_submitted</div>
+            <div style="color:#63b3ed;font-size:11px;">→ on_confirm →</div>
+            <div style="display:flex;gap:8px;align-items:center;">
+                <div class="state-box" style="background:#1c4532;border:2px solid #38a169;color:#68d391;font-weight:700;">accepted</div>
+                <span style="color:#718096;">or</span>
+                <div class="state-box" style="background:#742a2a;border:2px solid #e53e3e;color:#feb2b2;">rejected</div>
+            </div>
+            <div style="color:#63b3ed;font-size:11px;">→ DeDi publish →</div>
+            <div class="state-box" style="background:#7b341e;border:2px solid #c05621;color:#fbd38d;font-weight:700;">disclosed</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== TAB 3: COMPONENT DETAILS ===== -->
+<div id="components" class="tab-content">
+
+    <div class="section-title">All 10 Components — What to Build at Bootcamp</div>
+
+    <div class="grid-2">
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">1. CSV / Excel Parser &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 1-2 hrs</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> DISCOM CSV/Excel exports (.csv, .xlsx)</div>
+                <div><span style="color:#9ae6b4;">Output:</span> Parsed tabular data in memory (dict/dataframe)</div>
+                <div><span style="color:#9ae6b4;">Libraries:</span> pandas, openpyxl (Python)</div>
+                <div><span style="color:#9ae6b4;">Handle:</span> Multiple sheets, merged cells, varying date formats, missing values</div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">2. Schema Mapper &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 2-3 hrs</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> Parsed tabular data from Component 1</div>
+                <div><span style="color:#9ae6b4;">Output:</span> IES DatasetPayload JSON-LD document</div>
+                <div><span style="color:#9ae6b4;">Config:</span> YAML mapping file per DISCOM (column → IES field)</div>
+                <div><span style="color:#9ae6b4;">Must include:</span> @context, @type, financial_year, filing_category, discom_id</div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">3. Content Hasher (SHA-256) &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 30 min</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> DatasetPayload JSON dict</div>
+                <div><span style="color:#9ae6b4;">Output:</span> "sha256:hexstring"</div>
+                <div style="background:#0a1208;border-radius:6px;padding:8px;margin-top:8px;font-family:monospace;font-size:11px;color:#68d391;">
+                    canonical = json.dumps(payload,<br>
+                    &nbsp;&nbsp;sort_keys=True, separators=(',',':'))<br>
+                    return "sha256:" + hashlib.sha256(<br>
+                    &nbsp;&nbsp;canonical.encode('utf-8')).hexdigest()
+                </div>
+                <div style="color:#e53e3e;margin-top:6px;font-size:11px;">⚠ Confirm canonicalization method with IES team on Day 1</div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">4. CommonEnvelope Builder &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 1 hr</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> DatasetPayload + hash + issuer identity</div>
+                <div><span style="color:#9ae6b4;">Output:</span> Complete IES Filing object</div>
+                <div><span style="color:#9ae6b4;">Fields:</span> schema_version, content_hash, issuer_id, created_at, provenance (links to prior draft)</div>
+            </div>
+        </div>
+
+        <div class="detail-card" style="border:2px solid #38a169;background:#0a1f12;">
+            <div class="detail-card-title" style="color:#68d391;">5. Beckn Message Builder &nbsp;<span style="background:#e53e3e;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">WAS MISSING — NOW ADDED</span> &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 1-2 hrs</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> Action type (search/init/confirm/status), filing payload, credentials</div>
+                <div><span style="color:#9ae6b4;">Output:</span> Complete Beckn JSON { context + message }</div>
+                <div><span style="color:#9ae6b4;">Handles:</span> UUID gen for transaction_id + message_id, timestamps, BAP/BPP IDs, domain</div>
+                <div><span style="color:#9ae6b4;">Rule:</span> Same transaction_id across entire lifecycle (init → confirm → status)</div>
+                <div><span style="color:#9ae6b4;">domain:</span> "ies:regulatory" (confirm on Day 1)</div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">6. Receipt Processor &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P1 · 1 hr</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Input:</span> Signed Receipt from SERC via on_confirm</div>
+                <div><span style="color:#9ae6b4;">Steps:</span></div>
+                <div>1. Verify SERC's Ed25519 signature on receipt</div>
+                <div>2. Check: accepted_payload_hash == submitted hash</div>
+                <div>3. Store receipt + provenance chain in DB</div>
+                <div>4. If accepted: note disclosure_catalog_url</div>
+            </div>
+        </div>
+
+        <div class="detail-card blue">
+            <div class="detail-card-title" style="color:#90cdf4;">7. Credential Manager &nbsp;<span style="background:#3182ce;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P1 · 1-2 hrs</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#90cdf4;">Standard:</span> W3C Verifiable Credentials Data Model v1.1</div>
+                <div><span style="color:#90cdf4;">Algorithm:</span> Ed25519Signature2020</div>
+                <div><span style="color:#90cdf4;">Steps:</span></div>
+                <div>1. Request VC from sandbox credential service (DISCOM identity)</div>
+                <div>2. Store VC locally</div>
+                <div>3. Attach VC to /confirm request</div>
+                <div>4. Sign payload hash with private key</div>
+                <div style="color:#e53e3e;margin-top:6px;font-size:11px;">⚠ Get credential service API docs on Day 1 morning</div>
+            </div>
+        </div>
+
+        <div class="detail-card red-border">
+            <div class="detail-card-title" style="color:#90cdf4;">8. Async Callback Server &nbsp;<span style="background:#e53e3e;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">ENDPOINTS NOW EXPLICIT</span> &nbsp;<span style="background:#3182ce;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 1-2 hrs</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#90cdf4;">Framework:</span> Python FastAPI or Flask</div>
+                <div><span style="color:#90cdf4;">Endpoints (all POST):</span></div>
+                <div class="cb-endpoint" style="margin-top:6px;">POST /callback/on_search → store SERC catalog</div>
+                <div class="cb-endpoint">POST /callback/on_init → parse + store ValidationReport</div>
+                <div class="cb-endpoint">POST /callback/on_confirm → parse + verify signed Receipt</div>
+                <div class="cb-endpoint">POST /callback/on_status → parse Disclosure info</div>
+                <div style="color:#e53e3e;margin-top:6px;font-size:11px;">⚠ Must be reachable from Beckn network — register BAP callback URL in ONIX sandbox on Day 1</div>
+            </div>
+        </div>
+
+        <div class="detail-card blue">
+            <div class="detail-card-title" style="color:#90cdf4;">9. Filing State Machine &nbsp;<span style="background:#3182ce;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P1 · 1 hr</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#90cdf4;">Storage:</span> In-memory dict keyed by transaction_id (bootcamp); PostgreSQL (production)</div>
+                <div style="margin-top:8px;font-size:11px;line-height:1.9;">
+                    <div>preparing → <span style="color:#fbd38d;">/init sent</span> → draft_submitted</div>
+                    <div>draft_submitted → <span style="color:#fbd38d;">on_init rcvd</span> → draft_validated</div>
+                    <div>draft_validated → <span style="color:#fbd38d;">/confirm sent</span> → formally_submitted</div>
+                    <div>formally_submitted → <span style="color:#fbd38d;">on_confirm rcvd</span> → accepted / rejected</div>
+                    <div>accepted → <span style="color:#fbd38d;">DeDi publish</span> → disclosed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-card-title" style="color:#68d391;">10. JSON Schema Validator &nbsp;<span style="background:#276749;color:white;padding:2px 6px;border-radius:4px;font-size:10px;">P0 · 30 min</span></div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><span style="color:#9ae6b4;">Library:</span> jsonschema (Python)</div>
+                <div><span style="color:#9ae6b4;">Schemas needed from IES GitHub:</span></div>
+                <div>• CommonEnvelope JSON schema</div>
+                <div>• Filing JSON schema</div>
+                <div>• DatasetPayload (ARR) JSON schema</div>
+                <div>• Receipt JSON schema</div>
+                <div><span style="color:#9ae6b4;">When:</span> Validate before /init AND before /confirm — catch locally</div>
+                <div style="color:#e53e3e;margin-top:6px;font-size:11px;">⚠ Get actual .json schema files from IES GitHub on Day 1 first thing</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Day-wise plan -->
+    <div style="margin-top:24px;">
+        <div class="section-title">Bootcamp Build Plan — Day by Day</div>
+        <div class="grid-3">
+            <div class="day-card green">
+                <div class="day-card-title">Day 1 — MVP (P0)</div>
+                <div class="day-item">
+                    <div>✅ 1. CSV/Excel Parser</div>
+                    <div>✅ 2. Schema Mapper</div>
+                    <div>✅ 3. SHA-256 Hasher</div>
+                    <div>✅ 4. Envelope Builder</div>
+                    <div>✅ 5. Beckn Msg Builder</div>
+                    <div>✅ 8. Callback Server</div>
+                    <div>✅ 10. Schema Validator</div>
+                </div>
+                <div class="day-goal">🎯 Goal: /init → Mock SERC → receive ValidationReport via /on_init</div>
+            </div>
+            <div class="day-card blue">
+                <div class="day-card-title">Day 2 AM — Full Flow (P1)</div>
+                <div class="day-item">
+                    <div>✅ 7. Credential Manager (W3C VC)</div>
+                    <div>✅ /confirm with VC + signature</div>
+                    <div>✅ 6. Receipt Processor</div>
+                    <div>✅ 9. State Machine</div>
+                </div>
+                <div class="day-goal">🎯 Goal: Full end-to-end: prepare → init → on_init → confirm → on_confirm (signed receipt)</div>
+            </div>
+            <div class="day-card purple">
+                <div class="day-card-title">Day 2 PM — Interop (P2)</div>
+                <div class="day-item">
+                    <div>🔄 Conformance tests</div>
+                    <div>🔄 Cross-team interop (BAP/BPP)</div>
+                    <div>🔄 DeDi public disclosure</div>
+                    <div>🔄 3+ spec feedback items</div>
+                </div>
+                <div class="day-goal">🎯 Goal: Cross-team interop + public filing disclosed on DeDi catalog</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day 1 checklist -->
+    <div style="margin-top:24px;background:#0f1a10;border:1px solid #276749;border-radius:10px;padding:16px;">
+        <div style="color:#68d391;font-size:14px;font-weight:700;margin-bottom:12px;">Day 1 Morning — First Things to Do (Before Any Coding)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;color:#a0aec0;">
+            <div>☐ Get IES GitHub access → download actual JSON schema files</div>
+            <div>☐ Get sandbox endpoint URLs (Mock SERC, Gateway, Credential Service, Registry)</div>
+            <div>☐ Register BAP callback URL in ONIX sandbox</div>
+            <div>☐ Confirm hash canonicalization method with IES team</div>
+            <div>☐ Register DISCOM in DeDi directory</div>
+            <div>☐ Get sample ARR data format + Postman collection</div>
+            <div>☐ Get credential service API docs (for VC issuance)</div>
+            <div>☐ Confirm Beckn domain string = "ies:regulatory"</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== TAB 4: CORRECTIONS ===== -->
+<div id="corrections" class="tab-content">
+
+    <div class="section-title">What Was Fixed in This Architecture</div>
+
+    <div class="callout callout-error">
+        <strong>❌ Items Missing in Original Diagram → ✅ Fixed in This Version</strong>
+    </div>
+
+    <div style="margin-top:16px;">
+
+        <div class="fix-card">
+            <div class="fix-card-title">❌ Fix 1: Beckn Message Builder was Missing from RDE Service</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#feb2b2;">Problem:</strong> Original diagram showed CSV Parser → Mapper → Hasher → Envelope Builder — but how does the Beckn-formatted JSON get constructed? The component that builds { context + message }, generates UUIDs, and routes to ONIX was completely absent.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> Added Component 5 (Beckn Message Builder) explicitly in RDE Service as a distinct step in the pipeline.</div>
+            </div>
+        </div>
+
+        <div class="fix-card">
+            <div class="fix-card-title">❌ Fix 2: Callback Server Endpoints Were Not Listed</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#feb2b2;">Problem:</strong> "Async Callback Server" was shown as a black box — the 4 specific POST endpoints were not listed, making implementation unclear.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> All 4 endpoints now explicitly shown:
+                    <div class="cb-endpoint" style="margin-top:6px;">POST /callback/on_search</div>
+                    <div class="cb-endpoint">POST /callback/on_init → parse ValidationReport</div>
+                    <div class="cb-endpoint">POST /callback/on_confirm → parse signed Receipt</div>
+                    <div class="cb-endpoint">POST /callback/on_status → parse Disclosure info</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fix-card">
+            <div class="fix-card-title">❌ Fix 3: DeDi Public Disclosure Flow Was Missing</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#feb2b2;">Problem:</strong> DeDi was shown as just a storage layer — the Public Disclosure step (accepted filing → SERC publishes to DeDi catalog → publicly accessible) was not shown anywhere.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> Added "Public Disclosures" in DeDi catalog (Layer 6) and the full 5th step of the lifecycle: accepted → SERC publishes static JSON → anyone can discover + verify hash + verify SERC signature.</div>
+            </div>
+        </div>
+
+        <div class="fix-card warn">
+            <div class="fix-card-title">⚠ Fix 4: TI Service + EDX Service Scope Not Clarified</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#fbd38d;">Problem:</strong> TI (Tariff Intelligence) and EDX (Energy Digest/Telemetry Exchange) Services were shown at same priority as RDE Service — creating confusion about what to build in 3 days.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> Both marked as "Post-Bootcamp" with dashed borders. Bootcamp scope = RDE only.</div>
+            </div>
+        </div>
+
+        <div class="fix-card warn">
+            <div class="fix-card-title">⚠ Fix 5: Keycloak + API Gateway Shown as Bootcamp Items</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#fbd38d;">Problem:</strong> Both Keycloak IAM and API Gateway were shown without any note that they are production concerns — implying the team should build these during bootcamp.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> Both labeled "Production Concern — Sandbox has own auth" so team focuses on RDE components instead.</div>
+            </div>
+        </div>
+
+        <div class="fix-card warn">
+            <div class="fix-card-title">⚠ Fix 6: Consumer App + Admin Dashboard Not Marked as Post-Bootcamp</div>
+            <div style="font-size:12px;color:#a0aec0;line-height:1.7;">
+                <div><strong style="color:#fbd38d;">Problem:</strong> Consumer App (EDX View) and Admin Dashboard (TI Admin) appeared in Layer 1 without any priority distinction.</div>
+                <div style="margin-top:6px;"><strong style="color:#9ae6b4;">Fix:</strong> Both marked as "Post-Bootcamp" — only DISCOM Portal (RDE Filing) and Postman API Client are in bootcamp scope.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- What was correct -->
+    <div style="margin-top:24px;">
+        <div class="callout callout-success">
+            <strong>✅ What Was Already Correct in Original Architecture</strong>
+        </div>
+        <div class="grid-2" style="margin-top:12px;gap:10px;">
+            <div class="correct-item">✅ Beckn ONIX layer (BAP, Gateway, Registry, BPP)</div>
+            <div class="correct-item">✅ ONIX plugins (cache, decrypter, encrypter, keymanager, dedireg)</div>
+            <div class="correct-item">✅ Core RDE components (Parser, Mapper, Hasher, Envelope, Receipt)</div>
+            <div class="correct-item">✅ Data storage (PostgreSQL, Redis, S3, DeDi)</div>
+            <div class="correct-item">✅ External systems (Mock SERC, Credential Service, DeDi.global)</div>
+            <div class="correct-item">✅ Credential Manager (W3C VC) in Common Utilities</div>
+            <div class="correct-item">✅ State Machine in Common Utilities</div>
+            <div class="correct-item">✅ Keycloak IAM structure (realm, clients, roles, scopes)</div>
+            <div class="correct-item">✅ Mock AMISP + Mock Policy Registry as external systems</div>
+            <div class="correct-item">✅ Post-bootcamp TI + EDX services were present (just not labeled)</div>
+        </div>
+    </div>
+
+</div>
+
+</div><!-- end .content -->
+
+<div style="text-align:center;padding:20px;font-size:12px;color:#4a5568;border-top:1px solid #2d3748;margin-top:24px;">
+    Infosys IES Platform — Corrected Architecture &nbsp;|&nbsp; IES Bootcamp Apr 15–17, 2026 &nbsp;|&nbsp; RDE Use Case: DISCOM → SERC ARR Filing
+</div>
+
+<script>
+function showTab(name, el) {
+    document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById(name).classList.add('active');
+    el.classList.add('active');
+}
+</script>
+
+</body>
+</html>

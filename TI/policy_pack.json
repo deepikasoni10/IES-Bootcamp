@@ -1,0 +1,119 @@
+{
+  "transactionId": "37d5bbb3-9261-4d3e-b068-00a68a9a6872",
+  "fetchedAt": "2026-04-16T09:08:10Z",
+  "payloadHash": "18c70df8c1dfc1dd3bfa1729565e0170137a3926ac3d0204e070b2b1fee4fcf8",
+  "dataPayload": {
+    "@type": "IES_TariffIntelligence",
+    "objectType": "TARIFF_INTELLIGENCE",
+    "generatedAt": "2026-04-16T09:08:10Z",
+    "description": "Machine-readable tariff policies with rate structures, energy slabs, and time-of-day surcharges",
+    "programs": [
+      {
+        "id": "mera-shehar-res-001",
+        "objectType": "PROGRAM",
+        "@type": "PROGRAM",
+        "createdDateTime": "2024-04-10T10:00:00Z",
+        "modificationDateTime": "2024-04-10T10:00:00Z",
+        "programName": "MeraShehar Residential",
+        "programDescriptions": [
+          "Residential tariff program for MeraShehar municipality."
+        ]
+      },
+      {
+        "id": "mera-shehar-com-001",
+        "objectType": "PROGRAM",
+        "@type": "PROGRAM",
+        "createdDateTime": "2024-04-10T10:00:00Z",
+        "modificationDateTime": "2024-04-10T10:00:00Z",
+        "programName": "MeraShehar Commercial",
+        "programDescriptions": [
+          "Commercial tariff program for MeraShehar business district."
+        ]
+      }
+    ],
+    "policies": [
+      {
+        "id": "policy-res-telescopic-001",
+        "objectType": "POLICY",
+        "@type": "POLICY",
+        "createdDateTime": "2024-04-10T11:00:00Z",
+        "modificationDateTime": "2024-04-10T11:00:00Z",
+        "programID": "mera-shehar-res-001",
+        "policyID": "RES-T1",
+        "policyName": "Residential Telescopic Standard",
+        "policyType": "TARIFF",
+        "samplingInterval": "R/2024-04-10T00:00:00Z/P1M",
+        "energySlabs": [
+          {
+            "id": "s1",
+            "start": 0,
+            "end": 100,
+            "price": 4.5,
+            "@type": "EnergySlab"
+          },
+          {
+            "id": "s2",
+            "start": 101,
+            "end": 300,
+            "price": 7.5,
+            "@type": "EnergySlab"
+          },
+          {
+            "id": "s3",
+            "start": 301,
+            "end": null,
+            "price": 10.5,
+            "@type": "EnergySlab"
+          }
+        ],
+        "surchargeTariffs": [
+          {
+            "id": "night-discount",
+            "@type": "SurchargeTariff",
+            "recurrence": "P1D",
+            "interval": {
+              "start": "T23:00:00Z",
+              "duration": "PT6H"
+            },
+            "value": -10,
+            "unit": "PERCENT"
+          }
+        ]
+      },
+      {
+        "id": "policy-com-tou-001",
+        "objectType": "POLICY",
+        "@type": "POLICY",
+        "createdDateTime": "2024-04-10T11:00:00Z",
+        "modificationDateTime": "2024-04-10T11:00:00Z",
+        "programID": "mera-shehar-com-001",
+        "policyID": "COM-TOU1",
+        "policyName": "Commercial ToD Standard",
+        "policyType": "TARIFF",
+        "samplingInterval": "R/2024-04-10T00:00:00Z/P1M",
+        "energySlabs": [
+          {
+            "id": "fixed-base",
+            "start": 0,
+            "end": null,
+            "price": 8.5,
+            "@type": "EnergySlab"
+          }
+        ],
+        "surchargeTariffs": [
+          {
+            "id": "evening-peak",
+            "@type": "SurchargeTariff",
+            "recurrence": "P1D",
+            "interval": {
+              "start": "T18:00:00Z",
+              "duration": "PT4H"
+            },
+            "value": 1.5,
+            "unit": "INR_PER_KWH"
+          }
+        ]
+      }
+    ]
+  }
+}

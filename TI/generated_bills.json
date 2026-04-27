@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-04-16T11:45:48Z",
+  "tariffSource": "GCP SERC Server",
+  "policyHash": "18c70df8c1dfc1dd3bfa1729565e0170137a3926ac3d0204e070b2b1fee4fcf8",
+  "bills": [
+    {
+      "consumerNo": "KA-RES-204891",
+      "name": "Ramesh Kumar",
+      "category": "RESIDENTIAL",
+      "units": 350,
+      "nightUnits": 50,
+      "baseCharge": 2475.0,
+      "surcharge": -35.36,
+      "totalBill": 2439.64
+    },
+    {
+      "consumerNo": "KA-COM-098712",
+      "name": "Sharma Enterprises Pvt. Ltd.",
+      "category": "COMMERCIAL",
+      "units": 500,
+      "peakUnits": 100,
+      "baseCharge": 4250.0,
+      "surcharge": 150.0,
+      "totalBill": 4400.0
+    }
+  ]
+}

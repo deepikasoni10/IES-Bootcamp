@@ -1,0 +1,234 @@
+{
+  "conformanceRun": "2026-04-16T09:11:02Z",
+  "policyPackHash": "18c70df8c1dfc1dd3bfa1729565e0170137a3926ac3d0204e070b2b1fee4fcf8",
+  "telemetrySource": "synthetic",
+  "summary": {
+    "passed": 37,
+    "failed": 0,
+    "total": 37
+  },
+  "checks": [
+    {
+      "tag": "TI-1a",
+      "status": "[PASS]",
+      "description": "policy_pack.json has required envelope keys",
+      "detail": "Keys: ['transactionId', 'fetchedAt', 'payloadHash', 'dataPayload']"
+    },
+    {
+      "tag": "TI-1b",
+      "status": "[PASS]",
+      "description": "dataPayload contains policies list",
+      "detail": "2 policies found"
+    },
+    {
+      "tag": "TI-1c",
+      "status": "[PASS]",
+      "description": "dataPayload contains programs list",
+      "detail": "2 programs found"
+    },
+    {
+      "tag": "TI-2a",
+      "status": "[PASS]",
+      "description": "Policy RES-T1 has required fields",
+      "detail": "energySlabs=3, surchargeTariffs=1"
+    },
+    {
+      "tag": "TI-2b",
+      "status": "[PASS]",
+      "description": "Policy RES-T1 slab[0] has required fields",
+      "detail": "id=s1, start=0, end=100, price=4.5"
+    },
+    {
+      "tag": "TI-2b",
+      "status": "[PASS]",
+      "description": "Policy RES-T1 slab[1] has required fields",
+      "detail": "id=s2, start=101, end=300, price=7.5"
+    },
+    {
+      "tag": "TI-2b",
+      "status": "[PASS]",
+      "description": "Policy RES-T1 slab[2] has required fields",
+      "detail": "id=s3, start=301, end=None, price=10.5"
+    },
+    {
+      "tag": "TI-2a",
+      "status": "[PASS]",
+      "description": "Policy COM-TOU1 has required fields",
+      "detail": "energySlabs=1, surchargeTariffs=1"
+    },
+    {
+      "tag": "TI-2b",
+      "status": "[PASS]",
+      "description": "Policy COM-TOU1 slab[0] has required fields",
+      "detail": "id=fixed-base, start=0, end=None, price=8.5"
+    },
+    {
+      "tag": "TI-3",
+      "status": "[PASS]",
+      "description": "payloadHash SHA-256 verification",
+      "detail": "Hash: 18c70df8c1dfc1dd3bfa1729565e01... MATCH"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-RES-001: Residential: exactly 100 kWh (fills slab 1 on",
+      "detail": "expected total Rs.450.00, got Rs.450.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-RES-002: Residential: 200 kWh (slab 1 + slab 2)",
+      "detail": "expected total Rs.1200.00, got Rs.1200.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-RES-003: Residential: 350 kWh (all 3 slabs)",
+      "detail": "expected total Rs.2475.00, got Rs.2475.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-RES-004: Residential: 80 kWh (only in slab 1)",
+      "detail": "expected total Rs.360.00, got Rs.360.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-RES-005: Residential: 350 kWh with 50 kWh at night (-1",
+      "detail": "expected total Rs.2439.64, got Rs.2439.64"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-COM-001: Commercial: 200 kWh, no peak hours",
+      "detail": "expected total Rs.1700.00, got Rs.1700.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-COM-002: Commercial: 500 kWh, 100 kWh during evening p",
+      "detail": "expected total Rs.4400.00, got Rs.4400.00"
+    },
+    {
+      "tag": "TI-4",
+      "status": "[PASS]",
+      "description": "TV-COM-003: Commercial: 1000 kWh, 250 kWh during evening ",
+      "detail": "expected total Rs.8875.00, got Rs.8875.00"
+    },
+    {
+      "tag": "TI-4z",
+      "status": "[PASS]",
+      "description": "All test vectors (8/8) passed",
+      "detail": ""
+    },
+    {
+      "tag": "TI-5a",
+      "status": "[PASS]",
+      "description": "execution_trace.json has scenarios",
+      "detail": "4 scenarios found"
+    },
+    {
+      "tag": "TI-5b",
+      "status": "[PASS]",
+      "description": "All scenarios have clause-level trace entries",
+      "detail": "Total trace entries: 12"
+    },
+    {
+      "tag": "TI-5c",
+      "status": "[PASS]",
+      "description": "All trace entries have required fields (step, clause_id, kwh, rate, amount)",
+      "detail": ""
+    },
+    {
+      "tag": "EDX-1a",
+      "status": "[PASS]",
+      "description": "telemetry_data.json has required envelope keys",
+      "detail": "Keys: ['transactionId', 'fetchedAt', 'payloadHash', 'dataPayload']"
+    },
+    {
+      "tag": "EDX-1b",
+      "status": "[PASS]",
+      "description": "dataPayload contains resources",
+      "detail": "3 resources, each with intervals"
+    },
+    {
+      "tag": "EDX-1c",
+      "status": "[PASS]",
+      "description": "Resources have intervals",
+      "detail": "Total intervals: 288"
+    },
+    {
+      "tag": "EDX-2",
+      "status": "[PASS]",
+      "description": "telemetry payloadHash SHA-256 verification",
+      "detail": "Hash: 29ffd727b8ddba65ce2974829e01cd... MATCH"
+    },
+    {
+      "tag": "EDX-3a",
+      "status": "[PASS]",
+      "description": "Telemetry has ACTUAL quality intervals",
+      "detail": "ACTUAL=260, ESTIMATED=17, MISSING=11"
+    },
+    {
+      "tag": "EDX-3b",
+      "status": "[PASS]",
+      "description": "Telemetry has MISSING quality intervals (realistic data)",
+      "detail": "MISSING=11 (3.8%)"
+    },
+    {
+      "tag": "XUC-1a",
+      "status": "[PASS]",
+      "description": "annotated_telemetry.json has resources",
+      "detail": "3 resources"
+    },
+    {
+      "tag": "XUC-1b",
+      "status": "[PASS]",
+      "description": "Resource RES-001_IMPORT has required summary fields",
+      "detail": "totalKwh=28.47, totalCost=Rs.127.07, billed=93"
+    },
+    {
+      "tag": "XUC-1b",
+      "status": "[PASS]",
+      "description": "Resource RES-002_IMPORT has required summary fields",
+      "detail": "totalKwh=22.86, totalCost=Rs.101.93, billed=94"
+    },
+    {
+      "tag": "XUC-1b",
+      "status": "[PASS]",
+      "description": "Resource COM-001_IMPORT has required summary fields",
+      "detail": "totalKwh=93.05, totalCost=Rs.831.57, billed=90"
+    },
+    {
+      "tag": "XUC-1c",
+      "status": "[PASS]",
+      "description": "Interval records have required fields",
+      "detail": "Fields present: ['timestamp', 'kwh', 'quality', 'clause', 'cost']"
+    },
+    {
+      "tag": "XUC-2a",
+      "status": "[PASS]",
+      "description": "MISSING intervals correctly have cost=0 and clause=SKIPPED",
+      "detail": ""
+    },
+    {
+      "tag": "XUC-2b",
+      "status": "[PASS]",
+      "description": "No negative costs in annotated output",
+      "detail": "Total intervals checked: 288"
+    },
+    {
+      "tag": "XUC-2c",
+      "status": "[PASS]",
+      "description": "Commercial rate avg > Residential rate avg (sanity)",
+      "detail": "Residential avg Rs.4.39/kWh, Commercial avg Rs.8.75/kWh"
+    },
+    {
+      "tag": "XUC-2d",
+      "status": "[PASS]",
+      "description": "Cross-UC summary has totalKwh + totalCost",
+      "detail": "totalKwh=144.389, totalCost=Rs.1060.5700000000002"
+    }
+  ]
+}

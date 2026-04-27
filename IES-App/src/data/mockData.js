@@ -1,0 +1,197 @@
+export const DISCOM_INFO = {
+  id: 'discom-maharashtra-001',
+  name: 'Maharashtra State Electricity Distribution Co. Ltd.',
+  short: 'MSEDCL',
+  jurisdiction: 'Maharashtra',
+  licenseNumber: 'MERC/DISCOM/001',
+  did: 'did:ies:discom-maharashtra-001',
+  credentialStatus: 'active',
+  registeredAt: '2026-04-10T00:00:00Z',
+};
+
+export const MOCK_FILINGS = [
+  {
+    id: 'SERC/ARR/2026-27/MH/001',
+    txnId: 'txn-001',
+    title: 'ARR Petition FY 2026-27',
+    financialYear: '2026-27',
+    status: 'disclosed',
+    filedAt: '2026-04-15T14:00:00Z',
+    acceptedAt: '2026-04-15T14:30:00Z',
+    disclosedAt: '2026-04-15T15:00:00Z',
+    payloadHash: 'sha256:a3f2b8c9d1e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9',
+    totalRevenue: 48250,
+    observations: [],
+    disclosureUrl: 'https://dedi.ies.energy/catalogs/serc-mh/disclosures/arr-2026-27-mh-001.json',
+    steps: [
+      { name: 'Data Prepared',       completedAt: '2026-04-15T10:30:00Z', status: 'done' },
+      { name: 'Draft Submitted',     completedAt: '2026-04-15T11:00:00Z', status: 'done' },
+      { name: 'Validation Report',   completedAt: '2026-04-15T11:05:00Z', status: 'done' },
+      { name: 'Formal Submitted',    completedAt: '2026-04-15T14:00:00Z', status: 'done' },
+      { name: 'Receipt Received',    completedAt: '2026-04-15T14:30:00Z', status: 'done' },
+      { name: 'Publicly Disclosed',  completedAt: '2026-04-15T15:00:00Z', status: 'done' },
+    ],
+  },
+  {
+    id: 'SERC/ARR/2025-26/MH/003',
+    txnId: 'txn-002',
+    title: 'ARR Petition FY 2025-26 (Revised)',
+    financialYear: '2025-26',
+    status: 'accepted',
+    filedAt: '2026-03-10T09:00:00Z',
+    acceptedAt: '2026-03-10T11:00:00Z',
+    disclosedAt: null,
+    payloadHash: 'sha256:b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4',
+    totalRevenue: 45100,
+    observations: [
+      { field: 'data.demand_forecast.peak_demand_mw', severity: 'warning', message: 'Value deviates from prior year trend' },
+    ],
+    disclosureUrl: null,
+    steps: [
+      { name: 'Data Prepared',       completedAt: '2026-03-10T08:00:00Z', status: 'done' },
+      { name: 'Draft Submitted',     completedAt: '2026-03-10T08:30:00Z', status: 'done' },
+      { name: 'Validation Report',   completedAt: '2026-03-10T08:45:00Z', status: 'done' },
+      { name: 'Formal Submitted',    completedAt: '2026-03-10T09:00:00Z', status: 'done' },
+      { name: 'Receipt Received',    completedAt: '2026-03-10T11:00:00Z', status: 'done' },
+      { name: 'Publicly Disclosed',  completedAt: null,                   status: 'pending' },
+    ],
+  },
+  {
+    id: 'DRAFT-2026-04-15',
+    txnId: 'txn-003',
+    title: 'ARR Petition FY 2027-28',
+    financialYear: '2027-28',
+    status: 'draft_validated',
+    filedAt: '2026-04-15T09:00:00Z',
+    acceptedAt: null,
+    disclosedAt: null,
+    payloadHash: 'sha256:c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5',
+    totalRevenue: 51800,
+    observations: [
+      { field: 'data.capital_expenditure.distribution_losses', severity: 'info', message: 'Consider sub-category breakdowns per SERC format 4B' },
+    ],
+    disclosureUrl: null,
+    steps: [
+      { name: 'Data Prepared',       completedAt: '2026-04-15T08:30:00Z', status: 'done' },
+      { name: 'Draft Submitted',     completedAt: '2026-04-15T09:00:00Z', status: 'done' },
+      { name: 'Validation Report',   completedAt: '2026-04-15T09:10:00Z', status: 'done' },
+      { name: 'Formal Submitted',    completedAt: null,                   status: 'pending' },
+      { name: 'Receipt Received',    completedAt: null,                   status: 'pending' },
+      { name: 'Publicly Disclosed',  completedAt: null,                   status: 'pending' },
+    ],
+  },
+  {
+    id: 'SERC/ARR/2024-25/MH/001',
+    txnId: 'txn-004',
+    title: 'ARR Petition FY 2024-25',
+    financialYear: '2024-25',
+    status: 'rejected',
+    filedAt: '2025-04-01T10:00:00Z',
+    acceptedAt: null,
+    disclosedAt: null,
+    payloadHash: 'sha256:d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6',
+    totalRevenue: 42800,
+    observations: [
+      { field: 'data.revenue_requirement.return_on_equity_rs_crore', severity: 'error', message: 'RoE exceeds SERC approved ceiling of 15.5%' },
+    ],
+    disclosureUrl: null,
+    steps: [
+      { name: 'Data Prepared',       completedAt: '2025-04-01T09:00:00Z', status: 'done' },
+      { name: 'Draft Submitted',     completedAt: '2025-04-01T09:30:00Z', status: 'done' },
+      { name: 'Validation Report',   completedAt: '2025-04-01T09:45:00Z', status: 'done' },
+      { name: 'Formal Submitted',    completedAt: '2025-04-01T10:00:00Z', status: 'done' },
+      { name: 'Receipt Received',    completedAt: '2025-04-01T12:00:00Z', status: 'rejected' },
+      { name: 'Publicly Disclosed',  completedAt: null,                   status: 'pending' },
+    ],
+  },
+];
+
+export const MONTHLY_FILING_STATS = [
+  { month: 'Nov', filings: 1 }, { month: 'Dec', filings: 0 },
+  { month: 'Jan', filings: 2 }, { month: 'Feb', filings: 1 },
+  { month: 'Mar', filings: 3 }, { month: 'Apr', filings: 4 },
+];
+
+export const SAMPLE_DATASET_PAYLOAD = {
+  '@context': 'https://ies.energy/schemas/v1/context.jsonld',
+  '@type': 'ARRPetition',
+  financial_year: '2026-27',
+  filing_category: 'aggregate_revenue_requirement',
+  discom_id: 'discom-maharashtra-001',
+  data: {
+    revenue_requirement: {
+      total_revenue_rs_crore: 48250.5,
+      power_purchase_cost_rs_crore: 31200.0,
+      om_expenses_rs_crore: 4800.0,
+      depreciation_rs_crore: 3200.0,
+      interest_on_loans_rs_crore: 2850.5,
+      return_on_equity_rs_crore: 6200.0,
+    },
+    cost_of_supply: {
+      cost_per_unit_rs: 6.45,
+      at_losses_percent: 13.2,
+      distribution_losses_percent: 8.5,
+    },
+    demand_forecast: {
+      peak_demand_mw: 24500,
+      energy_requirement_mu: 142000,
+      connected_load_mw: 38000,
+      consumer_count: 29800000,
+    },
+    capital_expenditure: {
+      total_capex_rs_crore: 8200.0,
+      distribution_network_rs_crore: 5100.0,
+      metering_rs_crore: 1200.0,
+      it_systems_rs_crore: 900.0,
+    },
+  },
+};
+
+export const SAMPLE_CSV_COLUMNS = [
+  { source: 'Total Revenue (Rs Cr)',        target: 'data.revenue_requirement.total_revenue_rs_crore',         mapped: true },
+  { source: 'Power Purchase Cost (Rs Cr)',  target: 'data.revenue_requirement.power_purchase_cost_rs_crore',   mapped: true },
+  { source: 'O&M Expenses (Rs Cr)',         target: 'data.revenue_requirement.om_expenses_rs_crore',           mapped: true },
+  { source: 'Depreciation (Rs Cr)',         target: 'data.revenue_requirement.depreciation_rs_crore',          mapped: true },
+  { source: 'Interest on Loans (Rs Cr)',    target: 'data.revenue_requirement.interest_on_loans_rs_crore',     mapped: true },
+  { source: 'Return on Equity (Rs Cr)',     target: 'data.revenue_requirement.return_on_equity_rs_crore',      mapped: true },
+  { source: 'Cost per Unit (Rs)',           target: 'data.cost_of_supply.cost_per_unit_rs',                    mapped: true },
+  { source: 'AT&C Losses (%)',              target: 'data.cost_of_supply.at_losses_percent',                   mapped: true },
+  { source: 'Distribution Losses (%)',      target: 'data.cost_of_supply.distribution_losses_percent',         mapped: true },
+  { source: 'Peak Demand (MW)',             target: 'data.demand_forecast.peak_demand_mw',                     mapped: true },
+  { source: 'Energy Requirement (MU)',      target: 'data.demand_forecast.energy_requirement_mu',              mapped: true },
+  { source: 'Connected Load (MW)',          target: 'data.demand_forecast.connected_load_mw',                  mapped: true },
+  { source: 'Consumer Count',              target: 'data.demand_forecast.consumer_count',                     mapped: true },
+  { source: 'Total CAPEX (Rs Cr)',          target: 'data.capital_expenditure.total_capex_rs_crore',           mapped: true },
+  { source: 'Distribution Network (Rs Cr)', target: 'data.capital_expenditure.distribution_network_rs_crore', mapped: true },
+  { source: 'Metering (Rs Cr)',             target: 'data.capital_expenditure.metering_rs_crore',              mapped: true },
+  { source: 'IT Systems (Rs Cr)',           target: 'data.capital_expenditure.it_systems_rs_crore',            mapped: true },
+];
+
+export const VALIDATION_REPORT = {
+  status: 'validated_with_observations',
+  schema_check: 'pass',
+  hash_check: 'pass',
+  completeness_check: 'partial',
+  observations: [
+    { field: 'data.demand_forecast.peak_demand_mw', severity: 'warning', message: 'Value appears to deviate significantly from prior year trend (was 22,100 MW)' },
+    { field: 'data.capital_expenditure.distribution_losses', severity: 'info', message: 'Consider providing sub-category breakdowns per SERC format 4B' },
+  ],
+  recommendation: 'may_proceed_to_formal_filing',
+};
+
+export const MOCK_RECEIPT = {
+  '@context': 'https://ies.energy/schemas/v1/receipt.jsonld',
+  '@type': 'RegulatoryFilingReceipt',
+  filing_id: 'SERC/ARR/2026-27/MH/001',
+  status: 'accepted',
+  issuer: { id: 'mock-serc.sandbox.ies', name: 'Maharashtra Electricity Regulatory Commission' },
+  accepted_payload_hash: 'sha256:a3f2b8c9d1e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9',
+  issued_at: '2026-04-15T14:30:00Z',
+  observations: [],
+  disclosure_catalog_url: 'https://dedi.ies.energy/catalogs/serc-mh/disclosures/arr-2026-27-mh-001.json',
+  proof: {
+    type: 'Ed25519Signature2020',
+    verificationMethod: 'did:ies:mock-serc#key-1',
+    proofValue: 'z8HNs3kXmP9qR2vY4wZ7aB1cD5eF6gH8iJ0kL2mN4oP6qR8sT0uV2wX4yZ6...',
+  },
+};

@@ -1,0 +1,130 @@
+[
+  {
+    "scenario": "Residential -- 350 kWh (all slabs)",
+    "policy_id": "RES-T1",
+    "total_kwh": 350.0,
+    "total_bill": 2475.0,
+    "trace": [
+      {
+        "step": "SLAB",
+        "clause_id": "s1",
+        "description": "0-100 kWh @ Rs.4.5/kWh",
+        "kwh": 100,
+        "rate": 4.5,
+        "amount": 450.0
+      },
+      {
+        "step": "SLAB",
+        "clause_id": "s2",
+        "description": "0-300 kWh @ Rs.7.5/kWh",
+        "kwh": 200,
+        "rate": 7.5,
+        "amount": 1500.0
+      },
+      {
+        "step": "SLAB",
+        "clause_id": "s3",
+        "description": "301+ kWh @ Rs.10.5/kWh",
+        "kwh": 50.0,
+        "rate": 10.5,
+        "amount": 525.0
+      },
+      {
+        "step": "SURCHARGE",
+        "clause_id": "night-discount",
+        "description": "ToD -10% [23:00-05:00]: no data provided",
+        "kwh": 0,
+        "rate": 0,
+        "amount": 0
+      }
+    ]
+  },
+  {
+    "scenario": "Residential -- 350 kWh + 50 kWh night discount",
+    "policy_id": "RES-T1",
+    "total_kwh": 350.0,
+    "total_bill": 2439.64,
+    "trace": [
+      {
+        "step": "SLAB",
+        "clause_id": "s1",
+        "description": "0-100 kWh @ Rs.4.5/kWh",
+        "kwh": 100,
+        "rate": 4.5,
+        "amount": 450.0
+      },
+      {
+        "step": "SLAB",
+        "clause_id": "s2",
+        "description": "0-300 kWh @ Rs.7.5/kWh",
+        "kwh": 200,
+        "rate": 7.5,
+        "amount": 1500.0
+      },
+      {
+        "step": "SLAB",
+        "clause_id": "s3",
+        "description": "301+ kWh @ Rs.10.5/kWh",
+        "kwh": 50.0,
+        "rate": 10.5,
+        "amount": 525.0
+      },
+      {
+        "step": "SURCHARGE",
+        "clause_id": "night-discount",
+        "description": "ToD -10% [23:00-05:00] on 50.00 kWh",
+        "kwh": 50.0,
+        "rate": -0.7071428571428571,
+        "amount": -35.36
+      }
+    ]
+  },
+  {
+    "scenario": "Residential -- 80 kWh (slab 1 only)",
+    "policy_id": "RES-T1",
+    "total_kwh": 80.0,
+    "total_bill": 360.0,
+    "trace": [
+      {
+        "step": "SLAB",
+        "clause_id": "s1",
+        "description": "0-100 kWh @ Rs.4.5/kWh",
+        "kwh": 80.0,
+        "rate": 4.5,
+        "amount": 360.0
+      },
+      {
+        "step": "SURCHARGE",
+        "clause_id": "night-discount",
+        "description": "ToD -10% [23:00-05:00]: no data provided",
+        "kwh": 0,
+        "rate": 0,
+        "amount": 0
+      }
+    ]
+  },
+  {
+    "scenario": "Commercial  -- 500 kWh + 100 kWh evening peak",
+    "policy_id": "COM-TOU1",
+    "total_kwh": 500.0,
+    "total_bill": 4400.0,
+    "trace": [
+      {
+        "step": "SLAB",
+        "clause_id": "fixed-base",
+        "description": "0+ kWh @ Rs.8.5/kWh",
+        "kwh": 500.0,
+        "rate": 8.5,
+        "amount": 4250.0
+      },
+      {
+        "step": "SURCHARGE",
+        "clause_id": "evening-peak",
+        "description": "ToD Rs.+1.50/kWh [18:00-22:00] on 100.00 kWh",
+        "kwh": 100.0,
+        "rate": 1.5,
+        "amount": 150.0
+      }
+    ]
+  }
+]

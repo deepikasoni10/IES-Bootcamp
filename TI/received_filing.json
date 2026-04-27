@@ -1,0 +1,77 @@
+{
+  "dataPayload": {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/arr/context.jsonld",
+    "@type": "ARR_FILING",
+    "controlPeriodEnd": "FY 2024-25",
+    "controlPeriodStart": "FY 2024-25",
+    "currency": "INR",
+    "filingDate": "2025-04-16",
+    "filingId": "INFOSYS/ARR/IDCL/MYT/2024-25",
+    "filingType": "ANNUAL",
+    "fiscalYears": [
+      {
+        "amountBasis": "ESTIMATED",
+        "averageCostOfSupply": 8.78,
+        "fiscalYear": "FY 2024-25",
+        "lineItems": [
+          {
+            "amount": 920.5,
+            "category": "FIXED",
+            "head": "Transmission Cost",
+            "lineItemId": "transmission-cost",
+            "serialNumber": 1,
+            "subCategory": "NETWORK_COST"
+          },
+          {
+            "amount": 1750.25,
+            "category": "FIXED",
+            "head": "Net Distribution Cost",
+            "lineItemId": "distribution-cost",
+            "serialNumber": 2,
+            "subCategory": "NETWORK_COST"
+          },
+          {
+            "amount": 4200.0,
+            "category": "VARIABLE",
+            "head": "Power Purchase Cost",
+            "lineItemId": "power-purchase-cost",
+            "serialNumber": 3,
+            "subCategory": "ENERGY_COST"
+          },
+          {
+            "amount": 380.75,
+            "category": "FIXED",
+            "head": "Employee Cost",
+            "lineItemId": "employee-cost",
+            "serialNumber": 4,
+            "subCategory": "OPEX"
+          },
+          {
+            "amount": 210.3,
+            "category": "VARIABLE",
+            "head": "Distribution Loss",
+            "lineItemId": "rd-and-loss",
+            "serialNumber": 5,
+            "subCategory": "LOSS"
+          }
+        ],
+        "projectedUnitsConsumed": 8500.0,
+        "projectedUnitsConsumedUnit": "MU",
+        "totalRevenueRequirement": 7461.8,
+        "yearType": "CURRENT_YEAR"
+      }
+    ],
+    "id": "arr-infosys-discom-fy2024-25",
+    "licensee": "Infosys Distribution Company Limited",
+    "licenseeCode": "IDCL",
+    "objectType": "ARR_FILING",
+    "regulatoryCommission": "KERC",
+    "stateProvince": "Karnataka",
+    "status": "SUBMITTED",
+    "unitScale": "CRORE"
+  },
+  "filedBy": "infosys-ti-bpp",
+  "filingCreatedAt": "2026-04-16T07:43:17Z",
+  "payloadHash": "01d8c7576069c89e8089c17ae980e4518f5a71c99e7cebd7de4ef1e04772b50f",
+  "transactionId": "infosys-arr-filing-fy2024-25"
+}

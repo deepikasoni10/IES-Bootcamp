@@ -1,0 +1,141 @@
+{
+  "crossTeamBilling": {
+    "computedAt": "2026-04-16T09:58:18Z",
+    "meterDataFrom": "https://appraiser-mascot-possible.ngrok-free.dev",
+    "tariffFrom": "Infosys TI BPP (infosys-ti-bpp)",
+    "tariffHash": "18c70df8c1dfc1dd3bfa1729565e0170137a3926ac3d0204e070b2b1fee4fcf8",
+    "results": [
+      {
+        "resource": "TEST-METER-0001",
+        "zone": "Zone D",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 167.324,
+        "peak_kwh": 51.783,
+        "night_kwh": 22.846,
+        "base_charge": 954.93,
+        "surcharge": -13.04,
+        "total_bill": 941.89,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0002",
+        "zone": "Zone C",
+        "profile": "commercial",
+        "policy": "COM-TOU1",
+        "total_kwh": 90.934,
+        "peak_kwh": 27.875,
+        "night_kwh": 16.284,
+        "base_charge": 772.94,
+        "surcharge": 41.81,
+        "total_bill": 814.75,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0003",
+        "zone": "Zone B",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 175.412,
+        "peak_kwh": 54.3,
+        "night_kwh": 26.126,
+        "base_charge": 1015.59,
+        "surcharge": -15.13,
+        "total_bill": 1000.46,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0004",
+        "zone": "Zone D",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 174.588,
+        "peak_kwh": 50.203,
+        "night_kwh": 29.721,
+        "base_charge": 1009.41,
+        "surcharge": -17.18,
+        "total_bill": 992.23,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0005",
+        "zone": "Zone D",
+        "profile": "commercial",
+        "policy": "COM-TOU1",
+        "total_kwh": 99.348,
+        "peak_kwh": 30.936,
+        "night_kwh": 15.092,
+        "base_charge": 844.46,
+        "surcharge": 46.4,
+        "total_bill": 890.86,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0006",
+        "zone": "Zone A",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 170.33,
+        "peak_kwh": 50.609,
+        "night_kwh": 27.826,
+        "base_charge": 977.47,
+        "surcharge": -15.97,
+        "total_bill": 961.5,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0007",
+        "zone": "Zone A",
+        "profile": "commercial",
+        "policy": "COM-TOU1",
+        "total_kwh": 101.853,
+        "peak_kwh": 32.382,
+        "night_kwh": 15.047,
+        "base_charge": 865.75,
+        "surcharge": 48.57,
+        "total_bill": 914.32,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0008",
+        "zone": "Zone C",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 169.666,
+        "peak_kwh": 49.153,
+        "night_kwh": 25.664,
+        "base_charge": 972.49,
+        "surcharge": -14.71,
+        "total_bill": 957.78,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0009",
+        "zone": "Zone C",
+        "profile": "industrial",
+        "policy": "RES-T1",
+        "total_kwh": 175.148,
+        "peak_kwh": 54.137,
+        "night_kwh": 30.598,
+        "base_charge": 1013.61,
+        "surcharge": -17.71,
+        "total_bill": 995.9,
+        "intervals": 96
+      },
+      {
+        "resource": "TEST-METER-0010",
+        "zone": "Zone B",
+        "profile": "residential",
+        "policy": "RES-T1",
+        "total_kwh": 43.943,
+        "peak_kwh": 14.234,
+        "night_kwh": 6.346,
+        "base_charge": 197.74,
+        "surcharge": -2.86,
+        "total_bill": 194.88,
+        "intervals": 96
+      }
+    ],
+    "totalRevenue": 8664.57
+  }
+}
