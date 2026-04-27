@@ -1,0 +1,30 @@
+{
+  "$id": "https://india-energy-stack.github.io/schemas/EnergySlab.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "start",
+    "price"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "slab-1"
+    },
+    "start": {
+      "type": "number",
+      "description": "Energy consumption start point (inclusive) in kWh."
+    },
+    "end": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Energy consumption end point (exclusive) in kWh. Null for infinity."
+    },
+    "price": {
+      "type": "number",
+      "description": "Base price for energy in this slab."
+    }
+  }
+}

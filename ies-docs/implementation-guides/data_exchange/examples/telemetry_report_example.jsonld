@@ -1,0 +1,110 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+  "objectType": "REPORT",
+  "@type": "REPORT",
+  "id": "report-ies-telemetry-rich-001",
+  "createdDateTime": "2026-04-10T10:00:00Z",
+  "modificationDateTime": "2026-04-10T10:00:00Z",
+  "clientID": "aggregator-north-01-secure-vtn-id",
+  "reportName": "Complex_Audit_Telemetry_with_Aggregation",
+  "eventID": "policy-mumbai-res-001",
+  "clientName": "Virtual_Aggregator_North_01",
+  "payloadDescriptors": [
+    {
+      "objectType": "REPORT_PAYLOAD_DESCRIPTOR",
+      "@type": "REPORT_PAYLOAD_DESCRIPTOR",
+      "payloadType": "USAGE",
+      "readingType": "SUMMED",
+      "units": "KWH"
+    },
+    {
+      "objectType": "REPORT_PAYLOAD_DESCRIPTOR",
+      "@type": "REPORT_PAYLOAD_DESCRIPTOR",
+      "payloadType": "GENERATION",
+      "units": "KWH"
+    },
+    {
+      "objectType": "REPORT_PAYLOAD_DESCRIPTOR",
+      "@type": "REPORT_PAYLOAD_DESCRIPTOR",
+      "payloadType": "EXPORT",
+      "units": "KWH"
+    }
+  ],
+  "resources": [
+    {
+      "resourceName": "SUBSTATION_1",
+      "intervalPeriod": { "start": "2026-04-10T08:00:00Z", "duration": "PT1H" },
+      "intervals": [
+        { "id": 101, "payloads": [{ "type": "USAGE", "values": [45.50] }] },
+        { "id": 102, "payloads": [{ "type": "USAGE", "values": [38.20] }] }
+      ]
+    },
+    {
+      "resourceName": "METER_IND_001",
+      "intervalPeriod": { "start": "2026-04-10T08:00:00Z", "duration": "PT15M" },
+      "intervals": [
+        {
+          "id": 201,
+          "payloads": [
+            { "type": "USAGE", "values": [3.10] },
+            { "type": "DATA_QUALITY", "values": ["VALID"] }
+          ]
+        },
+        {
+          "id": 202,
+          "payloads": [
+            { "type": "USAGE", "values": [2.90] },
+            { "type": "DATA_QUALITY", "values": ["VALID"] }
+          ]
+        },
+        {
+          "id": 203,
+          "payloads": [
+            { "type": "USAGE", "values": [3.05] },
+            { "type": "DATA_QUALITY", "values": ["VALID"] }
+          ]
+        },
+        {
+          "id": 204,
+          "payloads": [
+            { "type": "USAGE", "values": [3.15] },
+            { "type": "DATA_QUALITY", "values": ["ESTIMATED"] }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceName": "METER_IND_002",
+      "intervalPeriod": { "start": "2026-04-10T08:00:00Z", "duration": "PT15M" },
+      "intervals": [
+        {
+          "id": 301,
+          "payloads": [
+            { "type": "USAGE", "values": [4.0] },
+            { "type": "DATA_QUALITY", "values": ["VALID"] }
+          ]
+        },
+        {
+          "id": 302,
+          "payloads": [
+            { "type": "USAGE", "values": [0.0] },
+            { "type": "DATA_QUALITY", "values": ["MISSING"] }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceName": "SOLAR_INVERTER_001",
+      "intervalPeriod": { "start": "2026-04-10T08:00:00Z", "duration": "PT1H" },
+      "intervals": [
+        { 
+          "id": 401, 
+          "payloads": [
+            { "type": "GENERATION", "values": [12.4] },
+            { "type": "EXPORT", "values": [8.2] }
+          ] 
+        }
+      ]
+    }
+  ]
+}

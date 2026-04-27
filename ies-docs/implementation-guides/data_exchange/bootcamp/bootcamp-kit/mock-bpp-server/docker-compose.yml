@@ -1,0 +1,132 @@
+# IES Bootcamp — Mock BPP Server (Self-Contained)
+#
+# Full beckn stack: ONIX BAP + ONIX BPP + Mock BPP + Sandbox BAP + Redis
+#
+# The ONIX BAP here is a shared test BAP for poll-mode testing.
+# In production, each Network Participant runs their own BAP.
+#
+# Usage:
+#   docker compose up -d --build
+#
+# Test:
+#   curl http://localhost:3002/api/health
+#   curl http://localhost:3002/api/transactions
+
+services:
+  # ============================================
+  # Redis — cache for ONIX adapters
+  # ============================================
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - beckn_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ============================================
+  # ONIX BAP Adapter — accepts requests from clients
+  # In production, NPs run their own BAP.
+  # This shared instance is for bootcamp testing.
+  # ============================================
+  onix-bap:
+    image: fidedocker/onix-adapter:latest
+    container_name: onix-bap
+    platform: linux/amd64
+    networks:
+      - beckn_network
+    ports:
+      - "8081:8081"
+    environment:
+      CONFIG_FILE: "/app/config/bootcamp-bap.yaml"
+      REDIS_ADDR: redis:6379
+    volumes:
+      - ./config:/app/config
+    command: ["./server", "--config=/app/config/bootcamp-bap.yaml"]
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ============================================
+  # ONIX BPP Adapter — beckn protocol layer
+  # Handles signing, schema validation, routing
+  # ============================================
+  onix-bpp:
+    image: fidedocker/onix-adapter:latest
+    container_name: onix-bpp
+    platform: linux/amd64
+    networks:
+      - beckn_network
+    ports:
+      - "8082:8082"
+    environment:
+      CONFIG_FILE: "/app/config/bootcamp-bpp.yaml"
+      REDIS_ADDR: redis:6379
+    volumes:
+      - ./config:/app/config
+    command: ["./server", "--config=/app/config/bootcamp-bpp.yaml"]
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # ============================================
+  # Sandbox BAP — logs on_* callbacks
+  # Receives callbacks from ONIX BAP receiver.
+  # Not needed for poll mode, but keeps the
+  # beckn return path working end-to-end.
+  # ============================================
+  sandbox-bap:
+    container_name: sandbox-bap
+    image: fidedocker/sandbox-2.0:latest
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    ports:
+      - "3001:3001"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3001/api/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    networks:
+      - beckn_network
+
+  # ============================================
+  # Mock BPP — IES data provider
+  # Serves: telemetry, ARR filings, tariff policies
+  # Enforces beckn lifecycle: select → init → confirm → status
+  # ============================================
+  mock-bpp:
+    container_name: mock-bpp
+    build:
+      context: ./mock-bpp
+      dockerfile: Dockerfile
+    environment:
+      - BPP_CALLER_URL=http://onix-bpp:8082/bpp/caller
+      - DATA_DIR=/data/bootcamp
+    volumes:
+      - ../example-data:/data/bootcamp:ro
+    ports:
+      - "3002:3002"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:3002/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - beckn_network
+    depends_on:
+      redis:
+        condition: service_healthy
+
+networks:
+  beckn_network:
+    name: beckn_network
+    driver: bridge

@@ -1,0 +1,2426 @@
+[
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-001_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-001_IMPORT",
+    "venID": "VEN-RES-001",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-001_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-001_EXPORT",
+    "venID": "VEN-RES-001",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-002_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-002_IMPORT",
+    "venID": "VEN-RES-002",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-002_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-002_EXPORT",
+    "venID": "VEN-RES-002",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-003_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-003_IMPORT",
+    "venID": "VEN-RES-003",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-003_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-003_EXPORT",
+    "venID": "VEN-RES-003",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-004_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-004_IMPORT",
+    "venID": "VEN-RES-004",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-004_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-004_EXPORT",
+    "venID": "VEN-RES-004",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-005_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-005_IMPORT",
+    "venID": "VEN-RES-005",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-005_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-005_EXPORT",
+    "venID": "VEN-RES-005",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-006_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-006_IMPORT",
+    "venID": "VEN-RES-006",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-006_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-006_EXPORT",
+    "venID": "VEN-RES-006",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-007_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-007_IMPORT",
+    "venID": "VEN-RES-007",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-007_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-007_EXPORT",
+    "venID": "VEN-RES-007",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-008_IMPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-008_IMPORT",
+    "venID": "VEN-RES-008",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-008_EXPORT",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-008_EXPORT",
+    "venID": "VEN-RES-008",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "EXPORT"
+        ]
+      },
+      {
+        "type": "EXPORTING",
+        "values": [
+          true
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-009",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-009",
+    "venID": "VEN-RES-009",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-010",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-010",
+    "venID": "VEN-RES-010",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-011",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-011",
+    "venID": "VEN-RES-011",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-012",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-012",
+    "venID": "VEN-RES-012",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-013",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-013",
+    "venID": "VEN-RES-013",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-014",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-014",
+    "venID": "VEN-RES-014",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-015",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-015",
+    "venID": "VEN-RES-015",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-016",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-016",
+    "venID": "VEN-RES-016",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-017",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-017",
+    "venID": "VEN-RES-017",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-018",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-018",
+    "venID": "VEN-RES-018",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-019",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-019",
+    "venID": "VEN-RES-019",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-020",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-020",
+    "venID": "VEN-RES-020",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-021",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-021",
+    "venID": "VEN-RES-021",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-022",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-022",
+    "venID": "VEN-RES-022",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-023",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-023",
+    "venID": "VEN-RES-023",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-024",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-024",
+    "venID": "VEN-RES-024",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-025",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-025",
+    "venID": "VEN-RES-025",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-026",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-026",
+    "venID": "VEN-RES-026",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-027",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-027",
+    "venID": "VEN-RES-027",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-028",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-028",
+    "venID": "VEN-RES-028",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-029",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-029",
+    "venID": "VEN-RES-029",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-030",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-030",
+    "venID": "VEN-RES-030",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-031",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-031",
+    "venID": "VEN-RES-031",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-032",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-032",
+    "venID": "VEN-RES-032",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-033",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-033",
+    "venID": "VEN-RES-033",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-034",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-034",
+    "venID": "VEN-RES-034",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-035",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-035",
+    "venID": "VEN-RES-035",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-036",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-036",
+    "venID": "VEN-RES-036",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-037",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-037",
+    "venID": "VEN-RES-037",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-038",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-038",
+    "venID": "VEN-RES-038",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-039",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-039",
+    "venID": "VEN-RES-039",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-040",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-040",
+    "venID": "VEN-RES-040",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-041",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-041",
+    "venID": "VEN-RES-041",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-042",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-042",
+    "venID": "VEN-RES-042",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-043",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-043",
+    "venID": "VEN-RES-043",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-044",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-044",
+    "venID": "VEN-RES-044",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-045",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-045",
+    "venID": "VEN-RES-045",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-046",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-046",
+    "venID": "VEN-RES-046",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-047",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-047",
+    "venID": "VEN-RES-047",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-048",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-048",
+    "venID": "VEN-RES-048",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-049",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-049",
+    "venID": "VEN-RES-049",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-050",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-050",
+    "venID": "VEN-RES-050",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-051",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-051",
+    "venID": "VEN-RES-051",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-052",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-052",
+    "venID": "VEN-RES-052",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-053",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-053",
+    "venID": "VEN-RES-053",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-054",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-054",
+    "venID": "VEN-RES-054",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-055",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-055",
+    "venID": "VEN-RES-055",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-056",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-056",
+    "venID": "VEN-RES-056",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-057",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-057",
+    "venID": "VEN-RES-057",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-058",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-058",
+    "venID": "VEN-RES-058",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-059",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-059",
+    "venID": "VEN-RES-059",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-060",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-060",
+    "venID": "VEN-RES-060",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-061",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-061",
+    "venID": "VEN-RES-061",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-062",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-062",
+    "venID": "VEN-RES-062",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-063",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-063",
+    "venID": "VEN-RES-063",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-064",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-064",
+    "venID": "VEN-RES-064",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-065",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-065",
+    "venID": "VEN-RES-065",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-066",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-066",
+    "venID": "VEN-RES-066",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-067",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-067",
+    "venID": "VEN-RES-067",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-068",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-068",
+    "venID": "VEN-RES-068",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-069",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-069",
+    "venID": "VEN-RES-069",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-070",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-070",
+    "venID": "VEN-RES-070",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-071",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-071",
+    "venID": "VEN-RES-071",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-072",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-072",
+    "venID": "VEN-RES-072",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-073",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-073",
+    "venID": "VEN-RES-073",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-074",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-074",
+    "venID": "VEN-RES-074",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-075",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-075",
+    "venID": "VEN-RES-075",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-076",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-076",
+    "venID": "VEN-RES-076",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-077",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-077",
+    "venID": "VEN-RES-077",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-078",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-078",
+    "venID": "VEN-RES-078",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-079",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-079",
+    "venID": "VEN-RES-079",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "RES-080",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "RES-080",
+    "venID": "VEN-RES-080",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-res-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-001",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-001",
+    "venID": "VEN-COM-001",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-002",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-002",
+    "venID": "VEN-COM-002",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-003",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-003",
+    "venID": "VEN-COM-003",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-004",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-004",
+    "venID": "VEN-COM-004",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-005",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-005",
+    "venID": "VEN-COM-005",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-006",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-006",
+    "venID": "VEN-COM-006",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-007",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-007",
+    "venID": "VEN-COM-007",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-008",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-008",
+    "venID": "VEN-COM-008",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-009",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-009",
+    "venID": "VEN-COM-009",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-010",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-010",
+    "venID": "VEN-COM-010",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-011",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-011",
+    "venID": "VEN-COM-011",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-012",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-012",
+    "venID": "VEN-COM-012",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-013",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-013",
+    "venID": "VEN-COM-013",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-014",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-014",
+    "venID": "VEN-COM-014",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-015",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-015",
+    "venID": "VEN-COM-015",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-016",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-016",
+    "venID": "VEN-COM-016",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-017",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-017",
+    "venID": "VEN-COM-017",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-018",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-018",
+    "venID": "VEN-COM-018",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-019",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-019",
+    "venID": "VEN-COM-019",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "COM-020",
+    "objectType": "RESOURCE",
+    "@type": "RESOURCE",
+    "resourceName": "COM-020",
+    "venID": "VEN-COM-020",
+    "attributes": [
+      {
+        "type": "PROGRAM_ID",
+        "values": [
+          "mera-shehar-com-001"
+        ]
+      },
+      {
+        "type": "CAPABILITIES",
+        "values": [
+          "CONSUMPTION"
+        ]
+      }
+    ]
+  }
+]

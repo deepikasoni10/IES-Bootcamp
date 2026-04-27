@@ -1,0 +1,170 @@
+appName: "onix-local"
+log:
+  level: debug
+  destinations:
+    - type: stdout
+  contextKeys:
+    - transaction_id
+    - message_id
+    - subscriber_id
+    - module_id
+http:
+  port: 8082
+  timeout:
+    read: 30
+    write: 30
+    idle: 30
+pluginManager:
+  root: ./plugins
+# OpenTelemetry (OTLP) - metrics and traces sent to OTEL collector, then to Loki/backend
+plugins:
+  otelsetup:
+    id: otelsetup
+    config:
+      serviceName: "beckn-one-bpp"
+      serviceVersion: "1.0.0"
+      environment: "development"
+      domain: "ev_charging"
+      otlpEndpoint: "otel-collector-bpp:4317"
+      enableMetrics: "true"
+      networkMetricsGranularity: "2min"
+      networkMetricsFrequency: "4min"
+      enableTracing: "true"
+      enableLogs: "true"
+      timeInterval: "5"
+      auditFieldsConfig: "/app/config/audit-fields.yaml"
+modules:
+  - name: bppTxnReceiver
+    path: /bpp/receiver/
+    handler:
+      type: std
+      role: bpp
+      httpClientConfig:
+        maxIdleConns: 1000
+        maxIdleConnsPerHost: 200
+        idleConnTimeout: 300s
+        responseHeaderTimeout: 5s
+      plugins:
+        registry:
+          id: dediregistry
+          config:
+            url: https://api.dev.beckn.io/registry/dedi # This is the testnet URL. The production URL is https://api.beckn.io/registry/dedi
+            registryName: subscribers.beckn.one # This is the wildcard string used to lookup across registries in Beckn One. Do not change this.
+            timeout: 10
+            retry_max: 3
+            retry_wait_min: 100ms
+            retry_wait_max: 500ms
+        keyManager:
+          id: simplekeymanager
+          config:
+            networkParticipant: ev-charging.sandbox2.com
+            keyId: 76EU7ncBX74BMNTQJMcMYoTMSzU7k71owUF53fN4jdxmosxZrdjdDk
+            signingPrivateKey: hnMdzvcZBnLJ6W1f4Y2ZCLlJo4phKMvs48ZbXjbS7/k=
+            signingPublicKey: H1xM/ejGIJpH+DmAF1A9KjBBLJ74pZ8B0gnZ4z4DIkU=
+            encrPrivateKey: hnMdzvcZBnLJ6W1f4Y2ZCLlJo4phKMvs48ZbXjbS7/k=
+            encrPublicKey: H1xM/ejGIJpH+DmAF1A9KjBBLJ74pZ8B0gnZ4z4DIkU=
+        cache:
+          id: cache
+          config:
+            addr: redis:6379
+        schemaValidator:
+          id: schemav2validator
+          config:
+            type: url
+            location: https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/tags/core-v2.0.0-lts/api/v2.0.0/beckn.yaml
+            cacheTTL: "3600"
+            extendedSchema_enabled: "true"
+            extendedSchema_cacheTTL: "86400"
+            extendedSchema_maxCacheSize: "100"
+            extendedSchema_downloadTimeout: "30"
+            extendedSchema_allowedDomains: "beckn.org,example.com,  raw.githubusercontent.com"
+        signValidator:
+          id: signvalidator
+        router:
+          id: router
+          config:
+            routingConfig: ./config/local-beckn-one-routing-BPPReceiver.yaml
+        checkPolicy:
+          id: opapolicychecker
+          config:
+            # Policy source configuration.
+            # type: url | file | dir | bundle
+            # location: path or URL to policy source
+            # query: OPA query path to evaluate (required)
+            type: file
+            location: ./pkg/plugin/implementation/opapolicychecker/testdata/example.rego
+            query: "data.policy.result"
+            refreshIntervalSeconds: "300"
+      steps:
+        - validateSign
+        - checkPolicy
+        - addRoute
+        - validateSchema
+  
+  - name: bppTxnCaller
+    path: /bpp/caller/
+    handler:
+      type: std
+      role: bpp
+      httpClientConfig:
+        maxIdleConns: 1000
+        maxIdleConnsPerHost: 200
+        idleConnTimeout: 300s
+        responseHeaderTimeout: 5s
+      plugins:
+        registry:
+          id: dediregistry
+          config:
+            url: https://api.dev.beckn.io/registry/dedi # This is the testnet URL. The production URL is https://api.beckn.io/registry/dedi
+            registryName: subscribers.beckn.one # This is the wildcard string used to lookup across registries in Beckn One. Do not change this.
+            timeout: 10
+            retry_max: 3
+            retry_wait_min: 100ms
+            retry_wait_max: 500ms
+        keyManager:
+          id: simplekeymanager
+          config:
+            networkParticipant: ev-charging.sandbox2.com
+            keyId: 76EU7ncBX74BMNTQJMcMYoTMSzU7k71owUF53fN4jdxmosxZrdjdDk
+            signingPrivateKey: hnMdzvcZBnLJ6W1f4Y2ZCLlJo4phKMvs48ZbXjbS7/k=
+            signingPublicKey: H1xM/ejGIJpH+DmAF1A9KjBBLJ74pZ8B0gnZ4z4DIkU=
+            encrPrivateKey: hnMdzvcZBnLJ6W1f4Y2ZCLlJo4phKMvs48ZbXjbS7/k=
+            encrPublicKey: H1xM/ejGIJpH+DmAF1A9KjBBLJ74pZ8B0gnZ4z4DIkU=
+        cache:
+          id: cache
+          config:
+            addr: redis:6379
+        schemaValidator:
+          id: schemav2validator
+          config:
+            type: url
+            location: https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/tags/core-v2.0.0-lts/api/v2.0.0/beckn.yaml
+            cacheTTL: "3600"
+            extendedSchema_enabled: "true"
+            extendedSchema_cacheTTL: "86400"
+            extendedSchema_maxCacheSize: "100"
+            extendedSchema_downloadTimeout: "30"
+            extendedSchema_allowedDomains: "beckn.org,example.com,raw.githubusercontent.com"
+        router:
+          id: router
+          config:
+            routingConfig: ./config/local-beckn-one-routing-BPPCaller.yaml
+        signer:
+          id: signer
+        middleware:
+          - id: reqpreprocessor
+            config:
+              contextKeys: transaction_id,message_id
+              role: bpp          
+        checkPolicy:
+          id: opapolicychecker
+          config:
+            type: file
+            location: ./pkg/plugin/implementation/opapolicychecker/testdata/example.rego
+            query: "data.policy.result"
+            refreshIntervalSeconds: "300"
+      steps:
+        - checkPolicy
+        - addRoute
+        - sign
+        - validateSchema

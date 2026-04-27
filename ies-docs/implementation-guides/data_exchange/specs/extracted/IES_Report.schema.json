@@ -1,0 +1,339 @@
+{
+  "$id": "https://india-energy-stack.github.io/schemas/IES_Report.schema.json",
+  "description": "A telemetry report consistent with oadr:report, extended for JSON-LD.\n",
+  "allOf": [
+    {
+      "type": "object",
+      "description": "Server provided representation of report",
+      "allOf": [
+        {
+          "type": "object",
+          "description": "metadata common to all addressable objects. Values provided by VTN on object creation.",
+          "required": [
+            "id",
+            "createdDateTime",
+            "modificationDateTime",
+            "objectType"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]*$",
+              "minLength": 1,
+              "maxLength": 128,
+              "description": "URL safe VTN assigned object ID.",
+              "example": "object-999"
+            },
+            "createdDateTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "datetime in RFC 3339 format",
+              "example": "2023-06-15T09:30:00+00:00"
+            },
+            "modificationDateTime": {
+              "type": "string",
+              "format": "date-time",
+              "description": "datetime in RFC 3339 format",
+              "example": "2023-06-15T09:30:00+00:00"
+            },
+            "objectType": {
+              "type": "string",
+              "description": "Types of objects addressable through API.",
+              "example": "EVENT",
+              "enum": [
+                "PROGRAM",
+                "EVENT",
+                "REPORT",
+                "SUBSCRIPTION",
+                "VEN",
+                "RESOURCE"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "report object.",
+          "required": [
+            "eventID",
+            "clientName",
+            "resources"
+          ],
+          "properties": {
+            "eventID": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]*$",
+              "minLength": 1,
+              "maxLength": 128,
+              "description": "URL safe VTN assigned object ID.",
+              "example": "object-999"
+            },
+            "clientName": {
+              "type": "string",
+              "description": "User generated identifier, may be VEN identifier provisioned out-of-band.",
+              "minLength": 1,
+              "maxLength": 128,
+              "example": "VEN-999"
+            },
+            "reportName": {
+              "type": "string",
+              "description": "User defined string for use in debugging or User Interface.",
+              "example": "Battery_usage_04112023",
+              "nullable": true,
+              "default": null
+            },
+            "payloadDescriptors": {
+              "type": "array",
+              "description": "A list of reportPayloadDescriptors.",
+              "items": {
+                "type": "object",
+                "description": "Contextual information used to interpret report payload values.\nE.g. a USAGE payload simply contains a usage value, an\nassociated descriptor provides necessary context such as units and data quality.\n",
+                "required": [
+                  "objectType",
+                  "payloadType"
+                ],
+                "properties": {
+                  "objectType": {
+                    "type": "string",
+                    "description": "Used as discriminator.",
+                    "enum": [
+                      "REPORT_PAYLOAD_DESCRIPTOR"
+                    ]
+                  },
+                  "payloadType": {
+                    "type": "string",
+                    "description": "Represents the nature of values.\n\nSee enumerations in Definitions for defined string values, or use privately defined strings\n",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "example": "USAGE"
+                  },
+                  "readingType": {
+                    "type": "string",
+                    "description": "Represents the type of reading.\n\nSee enumerations in Definitions for defined string values, or use privately defined strings\n",
+                    "example": "DIRECT_READ",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "units": {
+                    "type": "string",
+                    "description": "Units of measure.",
+                    "example": "KWH",
+                    "nullable": true,
+                    "default": null,
+                    "minLength": 1,
+                    "maxLength": 128
+                  },
+                  "accuracy": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "A quantification of the accuracy of a set of payload values.",
+                    "example": 0.0,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "confidence": {
+                    "type": "integer",
+                    "format": "int32",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "A quantification of the confidence in a set of payload values.",
+                    "example": 100,
+                    "nullable": true,
+                    "default": null
+                  }
+                }
+              },
+              "nullable": true,
+              "default": null
+            },
+            "resources": {
+              "type": "array",
+              "description": "A list of objects containing report data for a set of resources.",
+              "items": {
+                "type": "object",
+                "description": "Report data associated with a resource.",
+                "required": [
+                  "resourceName",
+                  "intervals"
+                ],
+                "properties": {
+                  "resourceName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "description": "User generated identifier. A value of AGGREGATED_REPORT indicates an aggregation of more that one resource's data",
+                    "example": "RESOURCE-999"
+                  },
+                  "intervalPeriod": {
+                    "type": "object",
+                    "description": "Defines temporal aspects of intervals.\nA start of \"0001-01-01\" or \"0001-01-01T00:00:00\" may indicate 'now'. See User Guide.\nA duration of \"P9999Y\" may indicate infinity. See User Guide.\nA randomizeStart indicates absolute range of client applied offset to start. See User Guide.\n",
+                    "properties": {
+                      "start": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "datetime in RFC 3339 format",
+                        "example": "2023-06-15T09:30:00+00:00"
+                      },
+                      "duration": {
+                        "type": "string",
+                        "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$",
+                        "description": "duration in ISO 8601 format",
+                        "example": "PT1H",
+                        "default": "PT0S"
+                      },
+                      "randomizeStart": {
+                        "type": "string",
+                        "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$",
+                        "description": "duration in ISO 8601 format",
+                        "example": "PT1H",
+                        "default": "PT0S"
+                      }
+                    }
+                  },
+                  "intervals": {
+                    "type": "array",
+                    "description": "A list of interval objects.",
+                    "items": {
+                      "type": "object",
+                      "description": "An object defining a temporal window and a list of valuesMaps.\nif intervalPeriod present may set temporal aspects of interval or override event.intervalPeriod.\n",
+                      "required": [
+                        "id",
+                        "payloads"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "A client generated number assigned an interval object. Not a sequence number.",
+                          "example": 0
+                        },
+                        "intervalPeriod": {
+                          "type": "object",
+                          "description": "Defines temporal aspects of intervals.\nA start of \"0001-01-01\" or \"0001-01-01T00:00:00\" may indicate 'now'. See User Guide.\nA duration of \"P9999Y\" may indicate infinity. See User Guide.\nA randomizeStart indicates absolute range of client applied offset to start. See User Guide.\n",
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "datetime in RFC 3339 format",
+                              "example": "2023-06-15T09:30:00+00:00"
+                            },
+                            "duration": {
+                              "type": "string",
+                              "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$",
+                              "description": "duration in ISO 8601 format",
+                              "example": "PT1H",
+                              "default": "PT0S"
+                            },
+                            "randomizeStart": {
+                              "type": "string",
+                              "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$",
+                              "description": "duration in ISO 8601 format",
+                              "example": "PT1H",
+                              "default": "PT0S"
+                            }
+                          }
+                        },
+                        "payloads": {
+                          "type": "array",
+                          "description": "A list of valuesMap objects.",
+                          "items": {
+                            "type": "object",
+                            "description": "Represents one or more values associated with a type.\n\nSee enumerations in Definitions for defined string values, or use privately defined strings\n",
+                            "required": [
+                              "type",
+                              "values"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128,
+                                "description": "Represents the nature of values.\n\nSee enumerations in Definitions for defined string values, or use privately defined strings\n",
+                                "example": "PRICE"
+                              },
+                              "values": {
+                                "type": "array",
+                                "description": "A list of data points. Most often a singular value such as a price.",
+                                "example": [
+                                  0.17
+                                ],
+                                "items": {
+                                  "anyOf": [
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "type": "integer"
+                                    },
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "boolean"
+                                    },
+                                    {
+                                      "type": "object",
+                                      "description": "A pair of floats typically used as a point on a 2 dimensional grid.",
+                                      "required": [
+                                        "x",
+                                        "y"
+                                      ],
+                                      "properties": {
+                                        "x": {
+                                          "type": "number",
+                                          "format": "float",
+                                          "description": "A value on an x axis.",
+                                          "example": 1.0
+                                        },
+                                        "y": {
+                                          "type": "number",
+                                          "format": "float",
+                                          "description": "A value on a y axis.",
+                                          "example": 2.0
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "clientID"
+          ],
+          "properties": {
+            "clientID": {
+              "type": "string",
+              "description": "ClientID as provisioned by Auhtentication Service and associated with client's bearer token\n",
+              "minLength": 1,
+              "maxLength": 128,
+              "example": "249rj49jiej"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "type": "string",
+          "example": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld"
+        }
+      }
+    }
+  ]
+}

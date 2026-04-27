@@ -1,0 +1,41 @@
+{
+  "$id": "https://india-energy-stack.github.io/schemas/IES_Attribute.schema.json",
+  "description": "Generic IES attribute mapping for supplemental metadata.\n",
+  "type": "object",
+  "required": [
+    "type",
+    "values"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "Represents the nature of values.",
+      "enum": [
+        "TARIFF_STRUCTURE",
+        "TOU_CAPABILITIES"
+      ]
+    },
+    "values": {
+      "type": "array",
+      "description": "A list of data points.",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      }
+    }
+  }
+}

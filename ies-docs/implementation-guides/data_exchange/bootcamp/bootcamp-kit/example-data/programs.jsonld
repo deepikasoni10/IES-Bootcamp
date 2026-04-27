@@ -1,0 +1,26 @@
+[
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "mera-shehar-res-001",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2024-04-10T10:00:00Z",
+    "modificationDateTime": "2024-04-10T10:00:00Z",
+    "programName": "MeraShehar Residential",
+    "programDescriptions": [
+      "Residential tariff program for MeraShehar municipality."
+    ]
+  },
+  {
+    "@context": "https://raw.githubusercontent.com/beckn/DEG/ies-specs/specification/external/schema/ies/core/context.jsonld",
+    "id": "mera-shehar-com-001",
+    "objectType": "PROGRAM",
+    "@type": "PROGRAM",
+    "createdDateTime": "2024-04-10T10:00:00Z",
+    "modificationDateTime": "2024-04-10T10:00:00Z",
+    "programName": "MeraShehar Commercial",
+    "programDescriptions": [
+      "Commercial tariff program for MeraShehar business district."
+    ]
+  }
+]
